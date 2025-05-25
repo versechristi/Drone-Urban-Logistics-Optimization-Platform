@@ -1,0 +1,897 @@
+
+--- 1. Loading Simulation Parameters ---
+INFO: "current_run_parameters.mat" not found. Loading default parameters.
+Default simulation parameters loaded.
+Using Parameters:
+    Scenario: [1×1 struct]
+       Drone: [1×1 struct]
+          SA: [1×1 struct]
+         ACO: [1×1 struct]
+      Output: [1×1 struct]
+
+
+--- 2. Generating Scenario Data ---
+Generating 50 customer locations and demands...
+Customer data generation complete.
+Generating 20 candidate depot locations...
+Candidate depot locations generation complete.
+Loading drone specifications...
+Drone specifications loaded: Payload=10.0, Range=15.0km, Cost/km=0.50
+
+--- 3. Optimizing Hub Locations ---
+Optimizing 5 hub locations from 20 candidates for 50 customers...
+Hub location optimization complete. Selected 5 hubs.
+Plot generated: Candidate Depots and 5 Selected Hubs (ExperimentRun_20250524_230838)
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\hub_layout_results\plot_candidate_vs_selected_hubs.png
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\hub_layout_results\plot_candidate_vs_selected_hubs.fig
+Evaluating hub layout fitness...
+Layout evaluation complete: AvgDist=1.82 km, MaxDist=3.55 km.
+Plot function "plot_Hub_Service_Areas" completed. Figure handle is valid before return.
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\hub_layout_results\plot_hub_service_areas.png
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\hub_layout_results\plot_hub_service_areas.fig
+Exporting hub layout data...
+Hub data exported to CSV: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\hub_layout_results\selected_hubs_data.csv
+Hub data exported to MAT: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\hub_layout_results\selected_hubs_data.mat
+
+--- 4. Running Path Planning Algorithms ---
+
+--- 4.1 Running Simulated Annealing (SA) ---
+Managed checkpoints for 114000 total iterations: [1 5 38000 76000 114000]
+
+--- Starting Simulated Annealing for VRP ---
+Initial Solution Cost: 2334066.34
+SA Temp Level 1: 1000.0000, Current Cost: 2334066.34 (Best: 2334066.34)
+SA: Reached checkpoint at iteration 1. Saving intermediate results.
+[警告: 将图例条目限制为 50 个。指定图形对象的向量以显示 50 个以上的条目。] 
+[> 位置：<a href="matlab:matlab.internal.language.introspective.errorDocCallback('legend>process_inputs', 'C:\MATLAB\toolbox\matlab\scribe\legend.m', 562)" style="font-weight:bold">legend>process_inputs</a> (<a href="matlab: opentoline('C:\MATLAB\toolbox\matlab\scribe\legend.m',562,0)">第 562 行</a>)
+位置: <a href="matlab:matlab.internal.language.introspective.errorDocCallback('legend>make_legend', 'C:\MATLAB\toolbox\matlab\scribe\legend.m', 319)" style="font-weight:bold">legend>make_legend</a> (<a href="matlab: opentoline('C:\MATLAB\toolbox\matlab\scribe\legend.m',319,0)">第 319 行</a>)
+位置: <a href="matlab:matlab.internal.language.introspective.errorDocCallback('legend', 'C:\MATLAB\toolbox\matlab\scribe\legend.m', 239)" style="font-weight:bold">legend</a> (<a href="matlab: opentoline('C:\MATLAB\toolbox\matlab\scribe\legend.m',239,0)">第 239 行</a>)
+位置: <a href="matlab:matlab.internal.language.introspective.errorDocCallback('path_planning_algorithms.visualizer_SA.plot_SA_Route_Snapshot', 'D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\+path_planning_algorithms\+visualizer_SA\plot_SA_Route_Snapshot.m', 60)" style="font-weight:bold">path_planning_algorithms.visualizer_SA.plot_SA_Route_Snapshot</a> (<a href="matlab: opentoline('D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\+path_planning_algorithms\+visualizer_SA\plot_SA_Route_Snapshot.m',60,0)">第 60 行</a>)
+位置: <a href="matlab:matlab.internal.language.introspective.errorDocCallback('path_planning_algorithms.simulated_annealing_vrp.solve_SA_VRP', 'D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\+path_planning_algorithms\+simulated_annealing_vrp\solve_SA_VRP.m', 104)" style="font-weight:bold">path_planning_algorithms.simulated_annealing_vrp.solve_SA_VRP</a> (<a href="matlab: opentoline('D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\+path_planning_algorithms\+simulated_annealing_vrp\solve_SA_VRP.m',104,0)">第 104 行</a>)
+位置: <a href="matlab:matlab.internal.language.introspective.errorDocCallback('main_Orchestrator', 'D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\main_Orchestrator.m', 217)" style="font-weight:bold">main_Orchestrator</a> (<a href="matlab: opentoline('D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\main_Orchestrator.m',217,0)">第 217 行</a>)] 
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_sa\plot_sa_routes_iter_1.png
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_sa\plot_sa_routes_iter_1.fig
+  -> New SA Best Cost: 2334059.94 at Iter 5 (Temp: 1000.0000)
+SA: Reached checkpoint at iteration 5. Saving intermediate results.
+[警告: 将图例条目限制为 50 个。指定图形对象的向量以显示 50 个以上的条目。] 
+[> 位置：<a href="matlab:matlab.internal.language.introspective.errorDocCallback('legend>process_inputs', 'C:\MATLAB\toolbox\matlab\scribe\legend.m', 562)" style="font-weight:bold">legend>process_inputs</a> (<a href="matlab: opentoline('C:\MATLAB\toolbox\matlab\scribe\legend.m',562,0)">第 562 行</a>)
+位置: <a href="matlab:matlab.internal.language.introspective.errorDocCallback('legend>make_legend', 'C:\MATLAB\toolbox\matlab\scribe\legend.m', 319)" style="font-weight:bold">legend>make_legend</a> (<a href="matlab: opentoline('C:\MATLAB\toolbox\matlab\scribe\legend.m',319,0)">第 319 行</a>)
+位置: <a href="matlab:matlab.internal.language.introspective.errorDocCallback('legend', 'C:\MATLAB\toolbox\matlab\scribe\legend.m', 239)" style="font-weight:bold">legend</a> (<a href="matlab: opentoline('C:\MATLAB\toolbox\matlab\scribe\legend.m',239,0)">第 239 行</a>)
+位置: <a href="matlab:matlab.internal.language.introspective.errorDocCallback('path_planning_algorithms.visualizer_SA.plot_SA_Route_Snapshot', 'D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\+path_planning_algorithms\+visualizer_SA\plot_SA_Route_Snapshot.m', 60)" style="font-weight:bold">path_planning_algorithms.visualizer_SA.plot_SA_Route_Snapshot</a> (<a href="matlab: opentoline('D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\+path_planning_algorithms\+visualizer_SA\plot_SA_Route_Snapshot.m',60,0)">第 60 行</a>)
+位置: <a href="matlab:matlab.internal.language.introspective.errorDocCallback('path_planning_algorithms.simulated_annealing_vrp.solve_SA_VRP', 'D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\+path_planning_algorithms\+simulated_annealing_vrp\solve_SA_VRP.m', 104)" style="font-weight:bold">path_planning_algorithms.simulated_annealing_vrp.solve_SA_VRP</a> (<a href="matlab: opentoline('D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\+path_planning_algorithms\+simulated_annealing_vrp\solve_SA_VRP.m',104,0)">第 104 行</a>)
+位置: <a href="matlab:matlab.internal.language.introspective.errorDocCallback('main_Orchestrator', 'D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\main_Orchestrator.m', 217)" style="font-weight:bold">main_Orchestrator</a> (<a href="matlab: opentoline('D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\main_Orchestrator.m',217,0)">第 217 行</a>)] 
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_sa\plot_sa_routes_iter_5.png
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_sa\plot_sa_routes_iter_5.fig
+  -> New SA Best Cost: 2334056.81 at Iter 8 (Temp: 1000.0000)
+  -> New SA Best Cost: 2334054.23 at Iter 26 (Temp: 1000.0000)
+  -> New SA Best Cost: 2333520.00 at Iter 27 (Temp: 1000.0000)
+  -> New SA Best Cost: 2333518.38 at Iter 28 (Temp: 1000.0000)
+  -> New SA Best Cost: 1398159.68 at Iter 34 (Temp: 1000.0000)
+  -> New SA Best Cost: 1398156.12 at Iter 37 (Temp: 1000.0000)
+  -> New SA Best Cost: 1398153.06 at Iter 43 (Temp: 1000.0000)
+  -> New SA Best Cost: 1398152.74 at Iter 53 (Temp: 1000.0000)
+  -> New SA Best Cost: 1398151.98 at Iter 59 (Temp: 1000.0000)
+  -> New SA Best Cost: 1398146.30 at Iter 70 (Temp: 1000.0000)
+  -> New SA Best Cost: 1398141.76 at Iter 71 (Temp: 1000.0000)
+  -> New SA Best Cost: 1335199.41 at Iter 76 (Temp: 1000.0000)
+  -> New SA Best Cost: 1335199.14 at Iter 78 (Temp: 1000.0000)
+  -> New SA Best Cost: 1335195.72 at Iter 81 (Temp: 1000.0000)
+  -> New SA Best Cost: 1335194.80 at Iter 93 (Temp: 1000.0000)
+  -> New SA Best Cost: 1335193.89 at Iter 97 (Temp: 1000.0000)
+  -> New SA Best Cost: 1129798.13 at Iter 111 (Temp: 1000.0000)
+  -> New SA Best Cost: 1129792.50 at Iter 131 (Temp: 1000.0000)
+  -> New SA Best Cost: 960260.91 at Iter 139 (Temp: 1000.0000)
+  -> New SA Best Cost: 726435.75 at Iter 145 (Temp: 1000.0000)
+  -> New SA Best Cost: 726433.87 at Iter 155 (Temp: 1000.0000)
+  -> New SA Best Cost: 726432.95 at Iter 161 (Temp: 1000.0000)
+  -> New SA Best Cost: 726431.21 at Iter 170 (Temp: 1000.0000)
+  -> New SA Best Cost: 726430.22 at Iter 175 (Temp: 1000.0000)
+  -> New SA Best Cost: 726428.08 at Iter 204 (Temp: 1000.0000)
+  -> New SA Best Cost: 726427.58 at Iter 212 (Temp: 1000.0000)
+  -> New SA Best Cost: 726424.20 at Iter 216 (Temp: 1000.0000)
+  -> New SA Best Cost: 726422.39 at Iter 237 (Temp: 1000.0000)
+SA Temp Level 2: 980.0000, Current Cost: 726427.96 (Best: 726422.39)
+  -> New SA Best Cost: 188.89 at Iter 283 (Temp: 980.0000)
+  -> New SA Best Cost: 185.13 at Iter 293 (Temp: 980.0000)
+  -> New SA Best Cost: 183.77 at Iter 296 (Temp: 980.0000)
+  -> New SA Best Cost: 183.62 at Iter 309 (Temp: 980.0000)
+  -> New SA Best Cost: 180.90 at Iter 437 (Temp: 980.0000)
+  -> New SA Best Cost: 177.37 at Iter 451 (Temp: 980.0000)
+  -> New SA Best Cost: 176.77 at Iter 457 (Temp: 980.0000)
+  -> New SA Best Cost: 171.08 at Iter 458 (Temp: 980.0000)
+  -> New SA Best Cost: 168.75 at Iter 465 (Temp: 980.0000)
+  -> New SA Best Cost: 166.76 at Iter 478 (Temp: 980.0000)
+SA Temp Level 3: 960.4000, Current Cost: 174.19 (Best: 166.76)
+  -> New SA Best Cost: 165.56 at Iter 513 (Temp: 960.4000)
+  -> New SA Best Cost: 165.53 at Iter 535 (Temp: 960.4000)
+  -> New SA Best Cost: 163.57 at Iter 543 (Temp: 960.4000)
+  -> New SA Best Cost: 154.67 at Iter 575 (Temp: 960.4000)
+SA Temp Level 4: 941.1920, Current Cost: 155.45 (Best: 154.67)
+  -> New SA Best Cost: 151.68 at Iter 756 (Temp: 941.1920)
+  -> New SA Best Cost: 151.10 at Iter 762 (Temp: 941.1920)
+  -> New SA Best Cost: 148.55 at Iter 835 (Temp: 941.1920)
+  -> New SA Best Cost: 148.22 at Iter 853 (Temp: 941.1920)
+  -> New SA Best Cost: 148.03 at Iter 857 (Temp: 941.1920)
+  -> New SA Best Cost: 144.57 at Iter 925 (Temp: 941.1920)
+  -> New SA Best Cost: 140.66 at Iter 998 (Temp: 941.1920)
+  -> New SA Best Cost: 138.50 at Iter 1000 (Temp: 941.1920)
+SA Temp Level 5: 922.3682, Current Cost: 138.50 (Best: 138.50)
+  -> New SA Best Cost: 138.50 at Iter 1004 (Temp: 922.3682)
+  -> New SA Best Cost: 132.29 at Iter 1009 (Temp: 922.3682)
+  -> New SA Best Cost: 131.31 at Iter 1013 (Temp: 922.3682)
+SA Temp Level 6: 903.9208, Current Cost: 191.87 (Best: 131.31)
+SA Temp Level 7: 885.8424, Current Cost: 163.89 (Best: 131.31)
+SA Temp Level 8: 868.1255, Current Cost: 175.09 (Best: 131.31)
+SA Temp Level 9: 850.7630, Current Cost: 158.36 (Best: 131.31)
+SA Temp Level 10: 833.7478, Current Cost: 168.68 (Best: 131.31)
+SA Temp Level 11: 817.0728, Current Cost: 146.49 (Best: 131.31)
+SA Temp Level 12: 800.7314, Current Cost: 157.01 (Best: 131.31)
+SA Temp Level 13: 784.7167, Current Cost: 986.87 (Best: 131.31)
+SA Temp Level 14: 769.0224, Current Cost: 153.86 (Best: 131.31)
+SA Temp Level 15: 753.6419, Current Cost: 1765.05 (Best: 131.31)
+SA Temp Level 16: 738.5691, Current Cost: 1997.72 (Best: 131.31)
+SA Temp Level 17: 723.7977, Current Cost: 155.19 (Best: 131.31)
+SA Temp Level 18: 709.3218, Current Cost: 141.20 (Best: 131.31)
+SA Temp Level 19: 695.1353, Current Cost: 149.13 (Best: 131.31)
+SA Temp Level 20: 681.2326, Current Cost: 503.86 (Best: 131.31)
+SA Temp Level 21: 667.6080, Current Cost: 158.46 (Best: 131.31)
+SA Temp Level 22: 654.2558, Current Cost: 160.69 (Best: 131.31)
+SA Temp Level 23: 641.1707, Current Cost: 160.00 (Best: 131.31)
+SA Temp Level 24: 628.3473, Current Cost: 155.59 (Best: 131.31)
+  -> New SA Best Cost: 130.22 at Iter 5836 (Temp: 628.3473)
+  -> New SA Best Cost: 129.06 at Iter 5838 (Temp: 628.3473)
+  -> New SA Best Cost: 129.03 at Iter 5842 (Temp: 628.3473)
+  -> New SA Best Cost: 128.88 at Iter 5846 (Temp: 628.3473)
+  -> New SA Best Cost: 126.36 at Iter 5861 (Temp: 628.3473)
+  -> New SA Best Cost: 126.22 at Iter 5862 (Temp: 628.3473)
+SA Temp Level 25: 615.7803, Current Cost: 143.75 (Best: 126.22)
+SA Temp Level 26: 603.4647, Current Cost: 133.94 (Best: 126.22)
+SA Temp Level 27: 591.3954, Current Cost: 132.06 (Best: 126.22)
+SA Temp Level 28: 579.5675, Current Cost: 171.31 (Best: 126.22)
+SA Temp Level 29: 567.9762, Current Cost: 140.92 (Best: 126.22)
+SA Temp Level 30: 556.6167, Current Cost: 146.55 (Best: 126.22)
+SA Temp Level 31: 545.4843, Current Cost: 142.10 (Best: 126.22)
+SA Temp Level 32: 534.5746, Current Cost: 162.00 (Best: 126.22)
+SA Temp Level 33: 523.8831, Current Cost: 160.16 (Best: 126.22)
+SA Temp Level 34: 513.4055, Current Cost: 260.78 (Best: 126.22)
+SA Temp Level 35: 503.1374, Current Cost: 612.67 (Best: 126.22)
+SA Temp Level 36: 493.0746, Current Cost: 164.73 (Best: 126.22)
+SA Temp Level 37: 483.2131, Current Cost: 190.82 (Best: 126.22)
+SA Temp Level 38: 473.5489, Current Cost: 206.49 (Best: 126.22)
+SA Temp Level 39: 464.0779, Current Cost: 391.99 (Best: 126.22)
+SA Temp Level 40: 454.7963, Current Cost: 408.31 (Best: 126.22)
+SA Temp Level 41: 445.7004, Current Cost: 412.75 (Best: 126.22)
+SA Temp Level 42: 436.7864, Current Cost: 410.62 (Best: 126.22)
+SA Temp Level 43: 428.0507, Current Cost: 393.77 (Best: 126.22)
+SA Temp Level 44: 419.4897, Current Cost: 159.02 (Best: 126.22)
+SA Temp Level 45: 411.0999, Current Cost: 151.09 (Best: 126.22)
+SA Temp Level 46: 402.8779, Current Cost: 152.61 (Best: 126.22)
+SA Temp Level 47: 394.8203, Current Cost: 556.81 (Best: 126.22)
+SA Temp Level 48: 386.9239, Current Cost: 154.40 (Best: 126.22)
+SA Temp Level 49: 379.1854, Current Cost: 157.10 (Best: 126.22)
+SA Temp Level 50: 371.6017, Current Cost: 193.68 (Best: 126.22)
+SA Temp Level 51: 364.1697, Current Cost: 160.15 (Best: 126.22)
+SA Temp Level 52: 356.8863, Current Cost: 143.84 (Best: 126.22)
+SA Temp Level 53: 349.7486, Current Cost: 166.85 (Best: 126.22)
+SA Temp Level 54: 342.7536, Current Cost: 184.12 (Best: 126.22)
+SA Temp Level 55: 335.8985, Current Cost: 161.95 (Best: 126.22)
+SA Temp Level 56: 329.1805, Current Cost: 164.65 (Best: 126.22)
+SA Temp Level 57: 322.5969, Current Cost: 179.18 (Best: 126.22)
+SA Temp Level 58: 316.1450, Current Cost: 162.27 (Best: 126.22)
+SA Temp Level 59: 309.8221, Current Cost: 189.33 (Best: 126.22)
+SA Temp Level 60: 303.6257, Current Cost: 172.27 (Best: 126.22)
+SA Temp Level 61: 297.5531, Current Cost: 181.82 (Best: 126.22)
+SA Temp Level 62: 291.6021, Current Cost: 166.66 (Best: 126.22)
+SA Temp Level 63: 285.7700, Current Cost: 128.24 (Best: 126.22)
+SA Temp Level 64: 280.0546, Current Cost: 179.38 (Best: 126.22)
+SA Temp Level 65: 274.4535, Current Cost: 147.15 (Best: 126.22)
+SA Temp Level 66: 268.9645, Current Cost: 155.04 (Best: 126.22)
+SA Temp Level 67: 263.5852, Current Cost: 149.38 (Best: 126.22)
+SA Temp Level 68: 258.3135, Current Cost: 948.71 (Best: 126.22)
+SA Temp Level 69: 253.1472, Current Cost: 156.84 (Best: 126.22)
+SA Temp Level 70: 248.0843, Current Cost: 164.69 (Best: 126.22)
+SA Temp Level 71: 243.1226, Current Cost: 153.05 (Best: 126.22)
+SA Temp Level 72: 238.2601, Current Cost: 134.32 (Best: 126.22)
+SA Temp Level 73: 233.4949, Current Cost: 150.64 (Best: 126.22)
+SA Temp Level 74: 228.8250, Current Cost: 152.26 (Best: 126.22)
+SA Temp Level 75: 224.2485, Current Cost: 174.97 (Best: 126.22)
+SA Temp Level 76: 219.7636, Current Cost: 160.04 (Best: 126.22)
+SA Temp Level 77: 215.3683, Current Cost: 155.91 (Best: 126.22)
+SA Temp Level 78: 211.0609, Current Cost: 157.61 (Best: 126.22)
+SA Temp Level 79: 206.8397, Current Cost: 160.30 (Best: 126.22)
+SA Temp Level 80: 202.7029, Current Cost: 164.37 (Best: 126.22)
+SA Temp Level 81: 198.6489, Current Cost: 146.88 (Best: 126.22)
+SA Temp Level 82: 194.6759, Current Cost: 166.75 (Best: 126.22)
+SA Temp Level 83: 190.7824, Current Cost: 158.69 (Best: 126.22)
+SA Temp Level 84: 186.9667, Current Cost: 443.62 (Best: 126.22)
+SA Temp Level 85: 183.2274, Current Cost: 148.29 (Best: 126.22)
+SA Temp Level 86: 179.5628, Current Cost: 206.97 (Best: 126.22)
+SA Temp Level 87: 175.9716, Current Cost: 147.54 (Best: 126.22)
+SA Temp Level 88: 172.4521, Current Cost: 173.85 (Best: 126.22)
+SA Temp Level 89: 169.0031, Current Cost: 379.35 (Best: 126.22)
+SA Temp Level 90: 165.6230, Current Cost: 161.43 (Best: 126.22)
+SA Temp Level 91: 162.3106, Current Cost: 158.38 (Best: 126.22)
+SA Temp Level 92: 159.0644, Current Cost: 143.25 (Best: 126.22)
+SA Temp Level 93: 155.8831, Current Cost: 145.01 (Best: 126.22)
+SA Temp Level 94: 152.7654, Current Cost: 155.75 (Best: 126.22)
+SA Temp Level 95: 149.7101, Current Cost: 141.79 (Best: 126.22)
+SA Temp Level 96: 146.7159, Current Cost: 154.66 (Best: 126.22)
+SA Temp Level 97: 143.7816, Current Cost: 154.53 (Best: 126.22)
+SA Temp Level 98: 140.9060, Current Cost: 155.77 (Best: 126.22)
+SA Temp Level 99: 138.0878, Current Cost: 145.80 (Best: 126.22)
+SA Temp Level 100: 135.3261, Current Cost: 138.48 (Best: 126.22)
+SA Temp Level 101: 132.6196, Current Cost: 138.67 (Best: 126.22)
+SA Temp Level 102: 129.9672, Current Cost: 159.87 (Best: 126.22)
+SA Temp Level 103: 127.3678, Current Cost: 138.41 (Best: 126.22)
+SA Temp Level 104: 124.8205, Current Cost: 149.55 (Best: 126.22)
+SA Temp Level 105: 122.3241, Current Cost: 150.33 (Best: 126.22)
+SA Temp Level 106: 119.8776, Current Cost: 147.97 (Best: 126.22)
+SA Temp Level 107: 117.4800, Current Cost: 145.24 (Best: 126.22)
+SA Temp Level 108: 115.1304, Current Cost: 139.59 (Best: 126.22)
+SA Temp Level 109: 112.8278, Current Cost: 150.44 (Best: 126.22)
+SA Temp Level 110: 110.5713, Current Cost: 155.81 (Best: 126.22)
+SA Temp Level 111: 108.3598, Current Cost: 158.74 (Best: 126.22)
+SA Temp Level 112: 106.1926, Current Cost: 152.98 (Best: 126.22)
+SA Temp Level 113: 104.0688, Current Cost: 143.08 (Best: 126.22)
+SA Temp Level 114: 101.9874, Current Cost: 146.33 (Best: 126.22)
+SA Temp Level 115: 99.9477, Current Cost: 157.26 (Best: 126.22)
+SA Temp Level 116: 97.9487, Current Cost: 136.91 (Best: 126.22)
+SA Temp Level 117: 95.9897, Current Cost: 146.24 (Best: 126.22)
+SA Temp Level 118: 94.0699, Current Cost: 136.25 (Best: 126.22)
+SA Temp Level 119: 92.1885, Current Cost: 140.59 (Best: 126.22)
+SA Temp Level 120: 90.3448, Current Cost: 171.63 (Best: 126.22)
+SA Temp Level 121: 88.5379, Current Cost: 168.40 (Best: 126.22)
+SA Temp Level 122: 86.7671, Current Cost: 150.85 (Best: 126.22)
+SA Temp Level 123: 85.0318, Current Cost: 153.67 (Best: 126.22)
+SA Temp Level 124: 83.3311, Current Cost: 153.03 (Best: 126.22)
+SA Temp Level 125: 81.6645, Current Cost: 244.42 (Best: 126.22)
+SA Temp Level 126: 80.0312, Current Cost: 146.70 (Best: 126.22)
+SA Temp Level 127: 78.4306, Current Cost: 144.35 (Best: 126.22)
+SA Temp Level 128: 76.8620, Current Cost: 156.45 (Best: 126.22)
+SA Temp Level 129: 75.3247, Current Cost: 157.85 (Best: 126.22)
+SA Temp Level 130: 73.8183, Current Cost: 154.97 (Best: 126.22)
+SA Temp Level 131: 72.3419, Current Cost: 231.36 (Best: 126.22)
+SA Temp Level 132: 70.8951, Current Cost: 136.22 (Best: 126.22)
+SA Temp Level 133: 69.4771, Current Cost: 148.06 (Best: 126.22)
+SA Temp Level 134: 68.0876, Current Cost: 143.29 (Best: 126.22)
+SA Temp Level 135: 66.7259, Current Cost: 156.24 (Best: 126.22)
+SA Temp Level 136: 65.3913, Current Cost: 152.26 (Best: 126.22)
+SA Temp Level 137: 64.0835, Current Cost: 152.83 (Best: 126.22)
+SA Temp Level 138: 62.8018, Current Cost: 152.11 (Best: 126.22)
+SA Temp Level 139: 61.5458, Current Cost: 162.33 (Best: 126.22)
+SA Temp Level 140: 60.3149, Current Cost: 152.97 (Best: 126.22)
+SA Temp Level 141: 59.1086, Current Cost: 154.29 (Best: 126.22)
+SA Temp Level 142: 57.9264, Current Cost: 154.43 (Best: 126.22)
+SA Temp Level 143: 56.7679, Current Cost: 136.33 (Best: 126.22)
+  -> New SA Best Cost: 125.55 at Iter 35591 (Temp: 56.7679)
+  -> New SA Best Cost: 125.33 at Iter 35603 (Temp: 56.7679)
+  -> New SA Best Cost: 124.47 at Iter 35693 (Temp: 56.7679)
+  -> New SA Best Cost: 123.96 at Iter 35695 (Temp: 56.7679)
+  -> New SA Best Cost: 123.17 at Iter 35696 (Temp: 56.7679)
+  -> New SA Best Cost: 119.36 at Iter 35737 (Temp: 56.7679)
+SA Temp Level 144: 55.6325, Current Cost: 123.83 (Best: 119.36)
+SA Temp Level 145: 54.5199, Current Cost: 127.20 (Best: 119.36)
+SA Temp Level 146: 53.4295, Current Cost: 138.35 (Best: 119.36)
+SA Temp Level 147: 52.3609, Current Cost: 152.99 (Best: 119.36)
+SA Temp Level 148: 51.3137, Current Cost: 166.47 (Best: 119.36)
+SA Temp Level 149: 50.2874, Current Cost: 158.99 (Best: 119.36)
+SA Temp Level 150: 49.2817, Current Cost: 175.59 (Best: 119.36)
+SA Temp Level 151: 48.2960, Current Cost: 166.93 (Best: 119.36)
+SA Temp Level 152: 47.3301, Current Cost: 151.94 (Best: 119.36)
+SA: Reached checkpoint at iteration 38000. Saving intermediate results.
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_sa\plot_sa_routes_iter_38000.png
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_sa\plot_sa_routes_iter_38000.fig
+SA Temp Level 153: 46.3835, Current Cost: 145.29 (Best: 119.36)
+SA Temp Level 154: 45.4558, Current Cost: 150.03 (Best: 119.36)
+SA Temp Level 155: 44.5467, Current Cost: 163.51 (Best: 119.36)
+SA Temp Level 156: 43.6558, Current Cost: 155.39 (Best: 119.36)
+SA Temp Level 157: 42.7827, Current Cost: 154.98 (Best: 119.36)
+SA Temp Level 158: 41.9270, Current Cost: 170.66 (Best: 119.36)
+SA Temp Level 159: 41.0885, Current Cost: 154.11 (Best: 119.36)
+SA Temp Level 160: 40.2667, Current Cost: 148.06 (Best: 119.36)
+SA Temp Level 161: 39.4614, Current Cost: 169.06 (Best: 119.36)
+SA Temp Level 162: 38.6721, Current Cost: 155.64 (Best: 119.36)
+SA Temp Level 163: 37.8987, Current Cost: 159.86 (Best: 119.36)
+SA Temp Level 164: 37.1407, Current Cost: 134.86 (Best: 119.36)
+SA Temp Level 165: 36.3979, Current Cost: 127.47 (Best: 119.36)
+SA Temp Level 166: 35.6699, Current Cost: 148.49 (Best: 119.36)
+SA Temp Level 167: 34.9566, Current Cost: 148.78 (Best: 119.36)
+SA Temp Level 168: 34.2574, Current Cost: 149.73 (Best: 119.36)
+SA Temp Level 169: 33.5723, Current Cost: 163.34 (Best: 119.36)
+SA Temp Level 170: 32.9008, Current Cost: 155.80 (Best: 119.36)
+SA Temp Level 171: 32.2428, Current Cost: 147.61 (Best: 119.36)
+SA Temp Level 172: 31.5980, Current Cost: 162.45 (Best: 119.36)
+SA Temp Level 173: 30.9660, Current Cost: 154.10 (Best: 119.36)
+SA Temp Level 174: 30.3467, Current Cost: 167.75 (Best: 119.36)
+SA Temp Level 175: 29.7397, Current Cost: 153.84 (Best: 119.36)
+SA Temp Level 176: 29.1449, Current Cost: 146.60 (Best: 119.36)
+SA Temp Level 177: 28.5620, Current Cost: 143.49 (Best: 119.36)
+SA Temp Level 178: 27.9908, Current Cost: 137.74 (Best: 119.36)
+SA Temp Level 179: 27.4310, Current Cost: 137.20 (Best: 119.36)
+SA Temp Level 180: 26.8824, Current Cost: 126.86 (Best: 119.36)
+  -> New SA Best Cost: 119.12 at Iter 44964 (Temp: 26.8824)
+  -> New SA Best Cost: 119.06 at Iter 44965 (Temp: 26.8824)
+SA Temp Level 181: 26.3447, Current Cost: 126.17 (Best: 119.06)
+SA Temp Level 182: 25.8178, Current Cost: 152.06 (Best: 119.06)
+SA Temp Level 183: 25.3015, Current Cost: 139.61 (Best: 119.06)
+SA Temp Level 184: 24.7954, Current Cost: 136.62 (Best: 119.06)
+SA Temp Level 185: 24.2995, Current Cost: 135.40 (Best: 119.06)
+SA Temp Level 186: 23.8135, Current Cost: 149.05 (Best: 119.06)
+SA Temp Level 187: 23.3373, Current Cost: 149.04 (Best: 119.06)
+SA Temp Level 188: 22.8705, Current Cost: 147.89 (Best: 119.06)
+SA Temp Level 189: 22.4131, Current Cost: 157.88 (Best: 119.06)
+SA Temp Level 190: 21.9649, Current Cost: 150.19 (Best: 119.06)
+SA Temp Level 191: 21.5256, Current Cost: 149.32 (Best: 119.06)
+SA Temp Level 192: 21.0950, Current Cost: 134.02 (Best: 119.06)
+SA Temp Level 193: 20.6731, Current Cost: 134.22 (Best: 119.06)
+SA Temp Level 194: 20.2597, Current Cost: 150.15 (Best: 119.06)
+SA Temp Level 195: 19.8545, Current Cost: 146.14 (Best: 119.06)
+SA Temp Level 196: 19.4574, Current Cost: 138.45 (Best: 119.06)
+SA Temp Level 197: 19.0682, Current Cost: 138.63 (Best: 119.06)
+SA Temp Level 198: 18.6869, Current Cost: 145.86 (Best: 119.06)
+SA Temp Level 199: 18.3131, Current Cost: 140.34 (Best: 119.06)
+SA Temp Level 200: 17.9469, Current Cost: 150.33 (Best: 119.06)
+SA Temp Level 201: 17.5879, Current Cost: 157.66 (Best: 119.06)
+SA Temp Level 202: 17.2362, Current Cost: 149.31 (Best: 119.06)
+SA Temp Level 203: 16.8915, Current Cost: 140.60 (Best: 119.06)
+SA Temp Level 204: 16.5536, Current Cost: 148.63 (Best: 119.06)
+SA Temp Level 205: 16.2226, Current Cost: 145.13 (Best: 119.06)
+SA Temp Level 206: 15.8981, Current Cost: 139.38 (Best: 119.06)
+SA Temp Level 207: 15.5801, Current Cost: 147.60 (Best: 119.06)
+SA Temp Level 208: 15.2685, Current Cost: 151.69 (Best: 119.06)
+SA Temp Level 209: 14.9632, Current Cost: 143.40 (Best: 119.06)
+SA Temp Level 210: 14.6639, Current Cost: 141.56 (Best: 119.06)
+SA Temp Level 211: 14.3706, Current Cost: 148.05 (Best: 119.06)
+SA Temp Level 212: 14.0832, Current Cost: 138.18 (Best: 119.06)
+SA Temp Level 213: 13.8016, Current Cost: 145.72 (Best: 119.06)
+SA Temp Level 214: 13.5255, Current Cost: 149.52 (Best: 119.06)
+SA Temp Level 215: 13.2550, Current Cost: 145.10 (Best: 119.06)
+SA Temp Level 216: 12.9899, Current Cost: 145.76 (Best: 119.06)
+SA Temp Level 217: 12.7301, Current Cost: 143.36 (Best: 119.06)
+SA Temp Level 218: 12.4755, Current Cost: 131.70 (Best: 119.06)
+SA Temp Level 219: 12.2260, Current Cost: 135.99 (Best: 119.06)
+SA Temp Level 220: 11.9815, Current Cost: 153.37 (Best: 119.06)
+SA Temp Level 221: 11.7419, Current Cost: 145.29 (Best: 119.06)
+SA Temp Level 222: 11.5070, Current Cost: 155.82 (Best: 119.06)
+SA Temp Level 223: 11.2769, Current Cost: 147.21 (Best: 119.06)
+SA Temp Level 224: 11.0513, Current Cost: 146.45 (Best: 119.06)
+SA Temp Level 225: 10.8303, Current Cost: 137.52 (Best: 119.06)
+SA Temp Level 226: 10.6137, Current Cost: 136.25 (Best: 119.06)
+SA Temp Level 227: 10.4014, Current Cost: 130.02 (Best: 119.06)
+SA Temp Level 228: 10.1934, Current Cost: 137.30 (Best: 119.06)
+SA Temp Level 229: 9.9895, Current Cost: 137.49 (Best: 119.06)
+SA Temp Level 230: 9.7897, Current Cost: 133.88 (Best: 119.06)
+SA Temp Level 231: 9.5939, Current Cost: 142.75 (Best: 119.06)
+SA Temp Level 232: 9.4021, Current Cost: 128.34 (Best: 119.06)
+SA Temp Level 233: 9.2140, Current Cost: 134.48 (Best: 119.06)
+SA Temp Level 234: 9.0297, Current Cost: 127.34 (Best: 119.06)
+SA Temp Level 235: 8.8492, Current Cost: 141.72 (Best: 119.06)
+SA Temp Level 236: 8.6722, Current Cost: 140.40 (Best: 119.06)
+SA Temp Level 237: 8.4987, Current Cost: 139.72 (Best: 119.06)
+SA Temp Level 238: 8.3288, Current Cost: 146.05 (Best: 119.06)
+SA Temp Level 239: 8.1622, Current Cost: 143.72 (Best: 119.06)
+SA Temp Level 240: 7.9989, Current Cost: 128.56 (Best: 119.06)
+SA Temp Level 241: 7.8390, Current Cost: 141.76 (Best: 119.06)
+SA Temp Level 242: 7.6822, Current Cost: 136.37 (Best: 119.06)
+SA Temp Level 243: 7.5285, Current Cost: 159.45 (Best: 119.06)
+SA Temp Level 244: 7.3780, Current Cost: 147.56 (Best: 119.06)
+SA Temp Level 245: 7.2304, Current Cost: 133.68 (Best: 119.06)
+SA Temp Level 246: 7.0858, Current Cost: 136.04 (Best: 119.06)
+SA Temp Level 247: 6.9441, Current Cost: 139.18 (Best: 119.06)
+SA Temp Level 248: 6.8052, Current Cost: 132.94 (Best: 119.06)
+SA Temp Level 249: 6.6691, Current Cost: 139.53 (Best: 119.06)
+SA Temp Level 250: 6.5357, Current Cost: 144.49 (Best: 119.06)
+SA Temp Level 251: 6.4050, Current Cost: 133.72 (Best: 119.06)
+SA Temp Level 252: 6.2769, Current Cost: 136.65 (Best: 119.06)
+  -> New SA Best Cost: 118.14 at Iter 62979 (Temp: 6.2769)
+SA Temp Level 253: 6.1514, Current Cost: 126.82 (Best: 118.14)
+SA Temp Level 254: 6.0283, Current Cost: 132.50 (Best: 118.14)
+SA Temp Level 255: 5.9078, Current Cost: 129.08 (Best: 118.14)
+SA Temp Level 256: 5.7896, Current Cost: 130.74 (Best: 118.14)
+SA Temp Level 257: 5.6738, Current Cost: 142.10 (Best: 118.14)
+SA Temp Level 258: 5.5603, Current Cost: 129.48 (Best: 118.14)
+SA Temp Level 259: 5.4491, Current Cost: 137.61 (Best: 118.14)
+SA Temp Level 260: 5.3402, Current Cost: 126.56 (Best: 118.14)
+SA Temp Level 261: 5.2333, Current Cost: 129.00 (Best: 118.14)
+SA Temp Level 262: 5.1287, Current Cost: 131.48 (Best: 118.14)
+SA Temp Level 263: 5.0261, Current Cost: 131.43 (Best: 118.14)
+SA Temp Level 264: 4.9256, Current Cost: 127.07 (Best: 118.14)
+SA Temp Level 265: 4.8271, Current Cost: 144.01 (Best: 118.14)
+SA Temp Level 266: 4.7305, Current Cost: 131.95 (Best: 118.14)
+SA Temp Level 267: 4.6359, Current Cost: 139.74 (Best: 118.14)
+SA Temp Level 268: 4.5432, Current Cost: 145.64 (Best: 118.14)
+SA Temp Level 269: 4.4523, Current Cost: 132.06 (Best: 118.14)
+SA Temp Level 270: 4.3633, Current Cost: 131.03 (Best: 118.14)
+SA Temp Level 271: 4.2760, Current Cost: 126.36 (Best: 118.14)
+SA Temp Level 272: 4.1905, Current Cost: 126.08 (Best: 118.14)
+SA Temp Level 273: 4.1067, Current Cost: 125.95 (Best: 118.14)
+  -> New SA Best Cost: 116.48 at Iter 68246 (Temp: 4.1067)
+SA Temp Level 274: 4.0246, Current Cost: 118.35 (Best: 116.48)
+  -> New SA Best Cost: 116.42 at Iter 68254 (Temp: 4.0246)
+  -> New SA Best Cost: 116.09 at Iter 68257 (Temp: 4.0246)
+  -> New SA Best Cost: 115.07 at Iter 68270 (Temp: 4.0246)
+  -> New SA Best Cost: 113.56 at Iter 68301 (Temp: 4.0246)
+  -> New SA Best Cost: 112.11 at Iter 68412 (Temp: 4.0246)
+  -> New SA Best Cost: 111.05 at Iter 68414 (Temp: 4.0246)
+SA Temp Level 275: 3.9441, Current Cost: 121.90 (Best: 111.05)
+SA Temp Level 276: 3.8652, Current Cost: 123.80 (Best: 111.05)
+SA Temp Level 277: 3.7879, Current Cost: 124.64 (Best: 111.05)
+SA Temp Level 278: 3.7121, Current Cost: 120.22 (Best: 111.05)
+SA Temp Level 279: 3.6379, Current Cost: 129.05 (Best: 111.05)
+SA Temp Level 280: 3.5651, Current Cost: 124.40 (Best: 111.05)
+SA Temp Level 281: 3.4938, Current Cost: 139.15 (Best: 111.05)
+SA Temp Level 282: 3.4239, Current Cost: 122.95 (Best: 111.05)
+SA Temp Level 283: 3.3555, Current Cost: 135.00 (Best: 111.05)
+SA Temp Level 284: 3.2884, Current Cost: 129.94 (Best: 111.05)
+SA Temp Level 285: 3.2226, Current Cost: 121.39 (Best: 111.05)
+SA Temp Level 286: 3.1581, Current Cost: 113.16 (Best: 111.05)
+  -> New SA Best Cost: 110.96 at Iter 71371 (Temp: 3.1581)
+  -> New SA Best Cost: 110.28 at Iter 71419 (Temp: 3.1581)
+  -> New SA Best Cost: 107.40 at Iter 71421 (Temp: 3.1581)
+SA Temp Level 287: 3.0950, Current Cost: 113.52 (Best: 107.40)
+SA Temp Level 288: 3.0331, Current Cost: 121.53 (Best: 107.40)
+SA Temp Level 289: 2.9724, Current Cost: 121.37 (Best: 107.40)
+SA Temp Level 290: 2.9130, Current Cost: 126.82 (Best: 107.40)
+SA Temp Level 291: 2.8547, Current Cost: 124.32 (Best: 107.40)
+SA Temp Level 292: 2.7976, Current Cost: 127.73 (Best: 107.40)
+SA Temp Level 293: 2.7417, Current Cost: 125.27 (Best: 107.40)
+  -> New SA Best Cost: 104.36 at Iter 73202 (Temp: 2.7417)
+  -> New SA Best Cost: 103.63 at Iter 73205 (Temp: 2.7417)
+SA Temp Level 294: 2.6868, Current Cost: 104.38 (Best: 103.63)
+  -> New SA Best Cost: 103.12 at Iter 73263 (Temp: 2.6868)
+  -> New SA Best Cost: 102.62 at Iter 73273 (Temp: 2.6868)
+  -> New SA Best Cost: 102.58 at Iter 73277 (Temp: 2.6868)
+  -> New SA Best Cost: 102.58 at Iter 73279 (Temp: 2.6868)
+  -> New SA Best Cost: 101.60 at Iter 73289 (Temp: 2.6868)
+  -> New SA Best Cost: 101.57 at Iter 73294 (Temp: 2.6868)
+SA Temp Level 295: 2.6331, Current Cost: 120.35 (Best: 101.57)
+SA Temp Level 296: 2.5804, Current Cost: 110.97 (Best: 101.57)
+SA Temp Level 297: 2.5288, Current Cost: 136.53 (Best: 101.57)
+SA Temp Level 298: 2.4782, Current Cost: 120.24 (Best: 101.57)
+SA Temp Level 299: 2.4287, Current Cost: 118.47 (Best: 101.57)
+SA Temp Level 300: 2.3801, Current Cost: 109.37 (Best: 101.57)
+SA Temp Level 301: 2.3325, Current Cost: 114.48 (Best: 101.57)
+SA Temp Level 302: 2.2859, Current Cost: 120.22 (Best: 101.57)
+SA Temp Level 303: 2.2401, Current Cost: 111.11 (Best: 101.57)
+  -> New SA Best Cost: 100.04 at Iter 75669 (Temp: 2.2401)
+  -> New SA Best Cost: 99.83 at Iter 75686 (Temp: 2.2401)
+  -> New SA Best Cost: 99.52 at Iter 75689 (Temp: 2.2401)
+  -> New SA Best Cost: 97.15 at Iter 75710 (Temp: 2.2401)
+SA Temp Level 304: 2.1953, Current Cost: 101.64 (Best: 97.15)
+SA: Reached checkpoint at iteration 76000. Saving intermediate results.
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_sa\plot_sa_routes_iter_76000.png
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_sa\plot_sa_routes_iter_76000.fig
+SA Temp Level 305: 2.1514, Current Cost: 108.40 (Best: 97.15)
+SA Temp Level 306: 2.1084, Current Cost: 103.32 (Best: 97.15)
+SA Temp Level 307: 2.0662, Current Cost: 111.98 (Best: 97.15)
+SA Temp Level 308: 2.0249, Current Cost: 109.80 (Best: 97.15)
+SA Temp Level 309: 1.9844, Current Cost: 119.72 (Best: 97.15)
+SA Temp Level 310: 1.9447, Current Cost: 118.96 (Best: 97.15)
+SA Temp Level 311: 1.9058, Current Cost: 127.78 (Best: 97.15)
+SA Temp Level 312: 1.8677, Current Cost: 126.97 (Best: 97.15)
+SA Temp Level 313: 1.8304, Current Cost: 117.12 (Best: 97.15)
+SA Temp Level 314: 1.7937, Current Cost: 111.62 (Best: 97.15)
+SA Temp Level 315: 1.7579, Current Cost: 120.36 (Best: 97.15)
+SA Temp Level 316: 1.7227, Current Cost: 129.83 (Best: 97.15)
+SA Temp Level 317: 1.6883, Current Cost: 119.82 (Best: 97.15)
+SA Temp Level 318: 1.6545, Current Cost: 116.69 (Best: 97.15)
+SA Temp Level 319: 1.6214, Current Cost: 119.86 (Best: 97.15)
+SA Temp Level 320: 1.5890, Current Cost: 107.80 (Best: 97.15)
+SA Temp Level 321: 1.5572, Current Cost: 112.76 (Best: 97.15)
+SA Temp Level 322: 1.5261, Current Cost: 119.06 (Best: 97.15)
+SA Temp Level 323: 1.4955, Current Cost: 116.57 (Best: 97.15)
+SA Temp Level 324: 1.4656, Current Cost: 124.05 (Best: 97.15)
+SA Temp Level 325: 1.4363, Current Cost: 124.94 (Best: 97.15)
+SA Temp Level 326: 1.4076, Current Cost: 114.10 (Best: 97.15)
+SA Temp Level 327: 1.3794, Current Cost: 105.23 (Best: 97.15)
+SA Temp Level 328: 1.3518, Current Cost: 102.44 (Best: 97.15)
+SA Temp Level 329: 1.3248, Current Cost: 103.17 (Best: 97.15)
+SA Temp Level 330: 1.2983, Current Cost: 108.43 (Best: 97.15)
+  -> New SA Best Cost: 96.59 at Iter 82339 (Temp: 1.2983)
+SA Temp Level 331: 1.2723, Current Cost: 101.54 (Best: 96.59)
+SA Temp Level 332: 1.2469, Current Cost: 98.48 (Best: 96.59)
+  -> New SA Best Cost: 96.54 at Iter 82843 (Temp: 1.2469)
+  -> New SA Best Cost: 96.53 at Iter 82854 (Temp: 1.2469)
+  -> New SA Best Cost: 95.82 at Iter 82858 (Temp: 1.2469)
+SA Temp Level 333: 1.2220, Current Cost: 100.51 (Best: 95.82)
+  -> New SA Best Cost: 94.72 at Iter 83124 (Temp: 1.2220)
+  -> New SA Best Cost: 94.70 at Iter 83132 (Temp: 1.2220)
+  -> New SA Best Cost: 94.47 at Iter 83136 (Temp: 1.2220)
+  -> New SA Best Cost: 94.24 at Iter 83161 (Temp: 1.2220)
+SA Temp Level 334: 1.1975, Current Cost: 103.92 (Best: 94.24)
+SA Temp Level 335: 1.1736, Current Cost: 107.00 (Best: 94.24)
+SA Temp Level 336: 1.1501, Current Cost: 97.85 (Best: 94.24)
+  -> New SA Best Cost: 94.11 at Iter 83930 (Temp: 1.1501)
+  -> New SA Best Cost: 93.01 at Iter 83948 (Temp: 1.1501)
+  -> New SA Best Cost: 92.80 at Iter 83988 (Temp: 1.1501)
+SA Temp Level 337: 1.1271, Current Cost: 92.87 (Best: 92.80)
+  -> New SA Best Cost: 92.77 at Iter 84025 (Temp: 1.1271)
+  -> New SA Best Cost: 92.70 at Iter 84029 (Temp: 1.1271)
+  -> New SA Best Cost: 92.10 at Iter 84059 (Temp: 1.1271)
+SA Temp Level 338: 1.1046, Current Cost: 97.98 (Best: 92.10)
+SA Temp Level 339: 1.0825, Current Cost: 97.55 (Best: 92.10)
+SA Temp Level 340: 1.0608, Current Cost: 102.22 (Best: 92.10)
+SA Temp Level 341: 1.0396, Current Cost: 103.72 (Best: 92.10)
+SA Temp Level 342: 1.0188, Current Cost: 105.19 (Best: 92.10)
+SA Temp Level 343: 0.9984, Current Cost: 103.91 (Best: 92.10)
+SA Temp Level 344: 0.9785, Current Cost: 106.19 (Best: 92.10)
+SA Temp Level 345: 0.9589, Current Cost: 107.98 (Best: 92.10)
+SA Temp Level 346: 0.9397, Current Cost: 101.24 (Best: 92.10)
+SA Temp Level 347: 0.9209, Current Cost: 105.69 (Best: 92.10)
+SA Temp Level 348: 0.9025, Current Cost: 97.51 (Best: 92.10)
+  -> New SA Best Cost: 91.24 at Iter 86771 (Temp: 0.9025)
+  -> New SA Best Cost: 91.24 at Iter 86788 (Temp: 0.9025)
+  -> New SA Best Cost: 91.23 at Iter 86864 (Temp: 0.9025)
+SA Temp Level 349: 0.8845, Current Cost: 92.56 (Best: 91.23)
+SA Temp Level 350: 0.8668, Current Cost: 92.40 (Best: 91.23)
+  -> New SA Best Cost: 90.81 at Iter 87293 (Temp: 0.8668)
+SA Temp Level 351: 0.8494, Current Cost: 94.00 (Best: 90.81)
+SA Temp Level 352: 0.8324, Current Cost: 93.07 (Best: 90.81)
+SA Temp Level 353: 0.8158, Current Cost: 93.68 (Best: 90.81)
+SA Temp Level 354: 0.7995, Current Cost: 99.52 (Best: 90.81)
+SA Temp Level 355: 0.7835, Current Cost: 92.94 (Best: 90.81)
+  -> New SA Best Cost: 89.93 at Iter 88638 (Temp: 0.7835)
+  -> New SA Best Cost: 89.56 at Iter 88713 (Temp: 0.7835)
+SA Temp Level 356: 0.7678, Current Cost: 89.80 (Best: 89.56)
+SA Temp Level 357: 0.7525, Current Cost: 96.81 (Best: 89.56)
+SA Temp Level 358: 0.7374, Current Cost: 93.39 (Best: 89.56)
+SA Temp Level 359: 0.7227, Current Cost: 91.90 (Best: 89.56)
+  -> New SA Best Cost: 89.18 at Iter 89661 (Temp: 0.7227)
+  -> New SA Best Cost: 88.91 at Iter 89670 (Temp: 0.7227)
+  -> New SA Best Cost: 88.91 at Iter 89673 (Temp: 0.7227)
+  -> New SA Best Cost: 88.33 at Iter 89689 (Temp: 0.7227)
+  -> New SA Best Cost: 88.32 at Iter 89693 (Temp: 0.7227)
+  -> New SA Best Cost: 87.86 at Iter 89712 (Temp: 0.7227)
+  -> New SA Best Cost: 87.44 at Iter 89719 (Temp: 0.7227)
+SA Temp Level 360: 0.7082, Current Cost: 88.61 (Best: 87.44)
+  -> New SA Best Cost: 86.93 at Iter 89916 (Temp: 0.7082)
+  -> New SA Best Cost: 86.70 at Iter 89957 (Temp: 0.7082)
+  -> New SA Best Cost: 86.64 at Iter 89979 (Temp: 0.7082)
+  -> New SA Best Cost: 85.96 at Iter 89985 (Temp: 0.7082)
+SA Temp Level 361: 0.6940, Current Cost: 86.04 (Best: 85.96)
+  -> New SA Best Cost: 85.93 at Iter 90045 (Temp: 0.6940)
+  -> New SA Best Cost: 84.41 at Iter 90102 (Temp: 0.6940)
+  -> New SA Best Cost: 84.18 at Iter 90104 (Temp: 0.6940)
+SA Temp Level 362: 0.6802, Current Cost: 86.63 (Best: 84.18)
+  -> New SA Best Cost: 83.43 at Iter 90350 (Temp: 0.6802)
+  -> New SA Best Cost: 83.04 at Iter 90363 (Temp: 0.6802)
+  -> New SA Best Cost: 83.01 at Iter 90392 (Temp: 0.6802)
+  -> New SA Best Cost: 82.89 at Iter 90435 (Temp: 0.6802)
+  -> New SA Best Cost: 81.75 at Iter 90445 (Temp: 0.6802)
+  -> New SA Best Cost: 81.30 at Iter 90453 (Temp: 0.6802)
+  -> New SA Best Cost: 81.30 at Iter 90454 (Temp: 0.6802)
+  -> New SA Best Cost: 81.01 at Iter 90464 (Temp: 0.6802)
+  -> New SA Best Cost: 80.99 at Iter 90473 (Temp: 0.6802)
+  -> New SA Best Cost: 80.47 at Iter 90488 (Temp: 0.6802)
+  -> New SA Best Cost: 80.37 at Iter 90493 (Temp: 0.6802)
+SA Temp Level 363: 0.6666, Current Cost: 83.21 (Best: 80.37)
+SA Temp Level 364: 0.6532, Current Cost: 86.43 (Best: 80.37)
+SA Temp Level 365: 0.6402, Current Cost: 84.93 (Best: 80.37)
+SA Temp Level 366: 0.6274, Current Cost: 88.64 (Best: 80.37)
+SA Temp Level 367: 0.6148, Current Cost: 84.47 (Best: 80.37)
+SA Temp Level 368: 0.6025, Current Cost: 85.65 (Best: 80.37)
+SA Temp Level 369: 0.5905, Current Cost: 87.44 (Best: 80.37)
+SA Temp Level 370: 0.5787, Current Cost: 82.49 (Best: 80.37)
+SA Temp Level 371: 0.5671, Current Cost: 81.41 (Best: 80.37)
+  -> New SA Best Cost: 80.29 at Iter 92523 (Temp: 0.5671)
+  -> New SA Best Cost: 80.19 at Iter 92571 (Temp: 0.5671)
+  -> New SA Best Cost: 80.01 at Iter 92577 (Temp: 0.5671)
+  -> New SA Best Cost: 79.74 at Iter 92609 (Temp: 0.5671)
+  -> New SA Best Cost: 78.89 at Iter 92715 (Temp: 0.5671)
+SA Temp Level 372: 0.5557, Current Cost: 79.18 (Best: 78.89)
+  -> New SA Best Cost: 78.69 at Iter 92774 (Temp: 0.5557)
+  -> New SA Best Cost: 78.30 at Iter 92797 (Temp: 0.5557)
+  -> New SA Best Cost: 75.98 at Iter 92808 (Temp: 0.5557)
+  -> New SA Best Cost: 75.25 at Iter 92822 (Temp: 0.5557)
+SA Temp Level 373: 0.5446, Current Cost: 78.71 (Best: 75.25)
+SA Temp Level 374: 0.5337, Current Cost: 76.54 (Best: 75.25)
+  -> New SA Best Cost: 74.74 at Iter 93295 (Temp: 0.5337)
+  -> New SA Best Cost: 74.67 at Iter 93299 (Temp: 0.5337)
+  -> New SA Best Cost: 74.26 at Iter 93331 (Temp: 0.5337)
+  -> New SA Best Cost: 74.24 at Iter 93339 (Temp: 0.5337)
+  -> New SA Best Cost: 74.14 at Iter 93365 (Temp: 0.5337)
+SA Temp Level 375: 0.5231, Current Cost: 75.61 (Best: 74.14)
+  -> New SA Best Cost: 73.81 at Iter 93703 (Temp: 0.5231)
+SA Temp Level 376: 0.5126, Current Cost: 76.38 (Best: 73.81)
+SA Temp Level 377: 0.5023, Current Cost: 74.89 (Best: 73.81)
+SA Temp Level 378: 0.4923, Current Cost: 76.24 (Best: 73.81)
+SA Temp Level 379: 0.4825, Current Cost: 77.50 (Best: 73.81)
+SA Temp Level 380: 0.4728, Current Cost: 77.05 (Best: 73.81)
+SA Temp Level 381: 0.4633, Current Cost: 77.15 (Best: 73.81)
+  -> New SA Best Cost: 73.70 at Iter 95200 (Temp: 0.4633)
+  -> New SA Best Cost: 73.60 at Iter 95206 (Temp: 0.4633)
+  -> New SA Best Cost: 73.52 at Iter 95209 (Temp: 0.4633)
+SA Temp Level 382: 0.4541, Current Cost: 74.33 (Best: 73.52)
+  -> New SA Best Cost: 73.38 at Iter 95263 (Temp: 0.4541)
+  -> New SA Best Cost: 73.08 at Iter 95277 (Temp: 0.4541)
+  -> New SA Best Cost: 73.07 at Iter 95285 (Temp: 0.4541)
+SA Temp Level 383: 0.4450, Current Cost: 73.18 (Best: 73.07)
+SA Temp Level 384: 0.4361, Current Cost: 73.93 (Best: 73.07)
+  -> New SA Best Cost: 72.88 at Iter 95767 (Temp: 0.4361)
+  -> New SA Best Cost: 72.79 at Iter 95995 (Temp: 0.4361)
+  -> New SA Best Cost: 72.34 at Iter 95997 (Temp: 0.4361)
+SA Temp Level 385: 0.4274, Current Cost: 72.34 (Best: 72.34)
+  -> New SA Best Cost: 71.87 at Iter 96072 (Temp: 0.4274)
+  -> New SA Best Cost: 70.27 at Iter 96097 (Temp: 0.4274)
+SA Temp Level 386: 0.4188, Current Cost: 72.08 (Best: 70.27)
+SA Temp Level 387: 0.4105, Current Cost: 71.53 (Best: 70.27)
+SA Temp Level 388: 0.4022, Current Cost: 70.86 (Best: 70.27)
+  -> New SA Best Cost: 69.51 at Iter 96833 (Temp: 0.4022)
+  -> New SA Best Cost: 69.01 at Iter 96853 (Temp: 0.4022)
+SA Temp Level 389: 0.3942, Current Cost: 69.85 (Best: 69.01)
+SA Temp Level 390: 0.3863, Current Cost: 71.85 (Best: 69.01)
+SA Temp Level 391: 0.3786, Current Cost: 72.89 (Best: 69.01)
+SA Temp Level 392: 0.3710, Current Cost: 72.09 (Best: 69.01)
+SA Temp Level 393: 0.3636, Current Cost: 73.43 (Best: 69.01)
+SA Temp Level 394: 0.3563, Current Cost: 71.73 (Best: 69.01)
+SA Temp Level 395: 0.3492, Current Cost: 70.64 (Best: 69.01)
+SA Temp Level 396: 0.3422, Current Cost: 72.37 (Best: 69.01)
+SA Temp Level 397: 0.3354, Current Cost: 71.10 (Best: 69.01)
+SA Temp Level 398: 0.3287, Current Cost: 72.21 (Best: 69.01)
+SA Temp Level 399: 0.3221, Current Cost: 70.93 (Best: 69.01)
+SA Temp Level 400: 0.3156, Current Cost: 70.36 (Best: 69.01)
+  -> New SA Best Cost: 68.99 at Iter 99914 (Temp: 0.3156)
+  -> New SA Best Cost: 68.89 at Iter 99934 (Temp: 0.3156)
+  -> New SA Best Cost: 68.66 at Iter 99935 (Temp: 0.3156)
+SA Temp Level 401: 0.3093, Current Cost: 69.09 (Best: 68.66)
+  -> New SA Best Cost: 68.64 at Iter 100218 (Temp: 0.3093)
+SA Temp Level 402: 0.3031, Current Cost: 69.52 (Best: 68.64)
+SA Temp Level 403: 0.2971, Current Cost: 69.28 (Best: 68.64)
+SA Temp Level 404: 0.2911, Current Cost: 70.40 (Best: 68.64)
+SA Temp Level 405: 0.2853, Current Cost: 69.49 (Best: 68.64)
+  -> New SA Best Cost: 68.06 at Iter 101146 (Temp: 0.2853)
+  -> New SA Best Cost: 67.97 at Iter 101170 (Temp: 0.2853)
+  -> New SA Best Cost: 67.97 at Iter 101191 (Temp: 0.2853)
+SA Temp Level 406: 0.2796, Current Cost: 68.44 (Best: 67.97)
+  -> New SA Best Cost: 67.89 at Iter 101419 (Temp: 0.2796)
+  -> New SA Best Cost: 67.88 at Iter 101449 (Temp: 0.2796)
+SA Temp Level 407: 0.2740, Current Cost: 68.27 (Best: 67.88)
+  -> New SA Best Cost: 67.77 at Iter 101519 (Temp: 0.2740)
+  -> New SA Best Cost: 67.76 at Iter 101525 (Temp: 0.2740)
+  -> New SA Best Cost: 67.54 at Iter 101539 (Temp: 0.2740)
+  -> New SA Best Cost: 67.33 at Iter 101565 (Temp: 0.2740)
+  -> New SA Best Cost: 67.29 at Iter 101593 (Temp: 0.2740)
+  -> New SA Best Cost: 67.14 at Iter 101596 (Temp: 0.2740)
+  -> New SA Best Cost: 67.07 at Iter 101652 (Temp: 0.2740)
+SA Temp Level 408: 0.2685, Current Cost: 68.14 (Best: 67.07)
+SA Temp Level 409: 0.2632, Current Cost: 69.74 (Best: 67.07)
+SA Temp Level 410: 0.2579, Current Cost: 70.14 (Best: 67.07)
+  -> New SA Best Cost: 67.05 at Iter 102367 (Temp: 0.2579)
+  -> New SA Best Cost: 67.03 at Iter 102370 (Temp: 0.2579)
+  -> New SA Best Cost: 66.88 at Iter 102377 (Temp: 0.2579)
+  -> New SA Best Cost: 66.88 at Iter 102379 (Temp: 0.2579)
+  -> New SA Best Cost: 65.71 at Iter 102386 (Temp: 0.2579)
+  -> New SA Best Cost: 65.70 at Iter 102401 (Temp: 0.2579)
+  -> New SA Best Cost: 65.51 at Iter 102481 (Temp: 0.2579)
+SA Temp Level 411: 0.2527, Current Cost: 65.87 (Best: 65.51)
+SA Temp Level 412: 0.2477, Current Cost: 66.57 (Best: 65.51)
+SA Temp Level 413: 0.2427, Current Cost: 68.54 (Best: 65.51)
+SA Temp Level 414: 0.2379, Current Cost: 66.49 (Best: 65.51)
+SA Temp Level 415: 0.2331, Current Cost: 66.94 (Best: 65.51)
+SA Temp Level 416: 0.2285, Current Cost: 66.90 (Best: 65.51)
+SA Temp Level 417: 0.2239, Current Cost: 67.63 (Best: 65.51)
+SA Temp Level 418: 0.2194, Current Cost: 67.17 (Best: 65.51)
+SA Temp Level 419: 0.2150, Current Cost: 66.92 (Best: 65.51)
+SA Temp Level 420: 0.2107, Current Cost: 66.82 (Best: 65.51)
+SA Temp Level 421: 0.2065, Current Cost: 66.84 (Best: 65.51)
+SA Temp Level 422: 0.2024, Current Cost: 67.11 (Best: 65.51)
+SA Temp Level 423: 0.1983, Current Cost: 65.91 (Best: 65.51)
+  -> New SA Best Cost: 65.48 at Iter 105518 (Temp: 0.1983)
+SA Temp Level 424: 0.1944, Current Cost: 65.94 (Best: 65.48)
+  -> New SA Best Cost: 65.48 at Iter 105780 (Temp: 0.1944)
+  -> New SA Best Cost: 65.36 at Iter 105819 (Temp: 0.1944)
+  -> New SA Best Cost: 65.32 at Iter 105929 (Temp: 0.1944)
+SA Temp Level 425: 0.1905, Current Cost: 65.68 (Best: 65.32)
+SA Temp Level 426: 0.1867, Current Cost: 66.35 (Best: 65.32)
+SA Temp Level 427: 0.1829, Current Cost: 66.51 (Best: 65.32)
+  -> New SA Best Cost: 65.32 at Iter 106676 (Temp: 0.1829)
+  -> New SA Best Cost: 65.18 at Iter 106678 (Temp: 0.1829)
+  -> New SA Best Cost: 64.61 at Iter 106704 (Temp: 0.1829)
+SA Temp Level 428: 0.1793, Current Cost: 64.84 (Best: 64.61)
+  -> New SA Best Cost: 64.59 at Iter 106774 (Temp: 0.1793)
+  -> New SA Best Cost: 64.58 at Iter 106820 (Temp: 0.1793)
+  -> New SA Best Cost: 64.56 at Iter 106953 (Temp: 0.1793)
+  -> New SA Best Cost: 64.54 at Iter 106966 (Temp: 0.1793)
+SA Temp Level 429: 0.1757, Current Cost: 64.69 (Best: 64.54)
+SA Temp Level 430: 0.1722, Current Cost: 65.52 (Best: 64.54)
+  -> New SA Best Cost: 64.54 at Iter 107269 (Temp: 0.1722)
+  -> New SA Best Cost: 64.37 at Iter 107328 (Temp: 0.1722)
+  -> New SA Best Cost: 64.31 at Iter 107362 (Temp: 0.1722)
+  -> New SA Best Cost: 64.23 at Iter 107378 (Temp: 0.1722)
+SA Temp Level 431: 0.1687, Current Cost: 64.46 (Best: 64.23)
+  -> New SA Best Cost: 64.21 at Iter 107531 (Temp: 0.1687)
+  -> New SA Best Cost: 64.21 at Iter 107534 (Temp: 0.1687)
+  -> New SA Best Cost: 64.15 at Iter 107544 (Temp: 0.1687)
+  -> New SA Best Cost: 64.13 at Iter 107571 (Temp: 0.1687)
+  -> New SA Best Cost: 64.04 at Iter 107634 (Temp: 0.1687)
+SA Temp Level 432: 0.1654, Current Cost: 64.11 (Best: 64.04)
+SA Temp Level 433: 0.1621, Current Cost: 64.31 (Best: 64.04)
+SA Temp Level 434: 0.1588, Current Cost: 65.58 (Best: 64.04)
+SA Temp Level 435: 0.1556, Current Cost: 64.41 (Best: 64.04)
+SA Temp Level 436: 0.1525, Current Cost: 64.24 (Best: 64.04)
+SA Temp Level 437: 0.1495, Current Cost: 64.15 (Best: 64.04)
+  -> New SA Best Cost: 63.86 at Iter 109010 (Temp: 0.1495)
+  -> New SA Best Cost: 63.82 at Iter 109213 (Temp: 0.1495)
+  -> New SA Best Cost: 63.82 at Iter 109236 (Temp: 0.1495)
+SA Temp Level 438: 0.1465, Current Cost: 64.05 (Best: 63.82)
+  -> New SA Best Cost: 63.79 at Iter 109310 (Temp: 0.1465)
+  -> New SA Best Cost: 63.79 at Iter 109321 (Temp: 0.1465)
+SA Temp Level 439: 0.1436, Current Cost: 64.34 (Best: 63.79)
+SA Temp Level 440: 0.1407, Current Cost: 64.97 (Best: 63.79)
+SA Temp Level 441: 0.1379, Current Cost: 64.91 (Best: 63.79)
+SA Temp Level 442: 0.1351, Current Cost: 64.69 (Best: 63.79)
+SA Temp Level 443: 0.1324, Current Cost: 64.43 (Best: 63.79)
+SA Temp Level 444: 0.1298, Current Cost: 64.36 (Best: 63.79)
+SA Temp Level 445: 0.1272, Current Cost: 64.72 (Best: 63.79)
+SA Temp Level 446: 0.1246, Current Cost: 65.94 (Best: 63.79)
+SA Temp Level 447: 0.1221, Current Cost: 65.68 (Best: 63.79)
+SA Temp Level 448: 0.1197, Current Cost: 65.60 (Best: 63.79)
+SA Temp Level 449: 0.1173, Current Cost: 64.95 (Best: 63.79)
+SA Temp Level 450: 0.1149, Current Cost: 64.88 (Best: 63.79)
+SA Temp Level 451: 0.1127, Current Cost: 64.86 (Best: 63.79)
+SA Temp Level 452: 0.1104, Current Cost: 65.00 (Best: 63.79)
+SA Temp Level 453: 0.1082, Current Cost: 64.57 (Best: 63.79)
+SA Temp Level 454: 0.1060, Current Cost: 64.77 (Best: 63.79)
+SA Temp Level 455: 0.1039, Current Cost: 65.10 (Best: 63.79)
+SA Temp Level 456: 0.1018, Current Cost: 64.66 (Best: 63.79)
+SA: Reached checkpoint at iteration 114000. Saving intermediate results.
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_sa\plot_sa_routes_iter_114000.png
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_sa\plot_sa_routes_iter_114000.fig
+SA Finished. Final Best Cost: 63.79 after 114000 total iterations.
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_sa\plot_sa_final_routes.png
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_sa\plot_sa_final_routes.fig
+Exporting solution to KML file: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_sa\routes_sa_final.kml
+[警告: Mapping Toolbox not found. KML export skipped.] 
+[> 位置：<a href="matlab:matlab.internal.language.introspective.errorDocCallback('common_utilities.export_Routes_to_KML', 'D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\+common_utilities\export_Routes_to_KML.m', 23)" style="font-weight:bold">common_utilities.export_Routes_to_KML</a> (<a href="matlab: opentoline('D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\+common_utilities\export_Routes_to_KML.m',23,0)">第 23 行</a>)
+位置: <a href="matlab:matlab.internal.language.introspective.errorDocCallback('main_Orchestrator', 'D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\main_Orchestrator.m', 240)" style="font-weight:bold">main_Orchestrator</a> (<a href="matlab: opentoline('D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\main_Orchestrator.m',240,0)">第 240 行</a>)] 
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_sa\plot_sa_convergence.png
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_sa\plot_sa_convergence.fig
+SA run completed. Time: 380.33 s, Cost: 63.79
+
+--- 4.2 Running Ant Colony Optimization (ACO) ---
+Managed checkpoints for 100 total iterations: [1 5 33 66 100]
+
+--- Starting Ant Colony Optimization for VRP ---
+ACO Iteration 1/100:  Global Best Cost: Inf
+  ** New Global Best Found by ACO: 78.07 at iteration 1 **
+ACO: Reached checkpoint at iteration 1. Saving intermediate results.
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_aco\plot_aco_routes_iter_1.png
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_aco\plot_aco_routes_iter_1.fig
+ACO Iteration 2/100:  Global Best Cost: 78.07
+  ** New Global Best Found by ACO: 67.57 at iteration 2 **
+ACO Iteration 3/100:  Global Best Cost: 67.57
+  ** New Global Best Found by ACO: 63.56 at iteration 3 **
+ACO Iteration 4/100:  Global Best Cost: 63.56
+ACO Iteration 5/100:  Global Best Cost: 63.56
+  ** New Global Best Found by ACO: 60.92 at iteration 5 **
+ACO: Reached checkpoint at iteration 5. Saving intermediate results.
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_aco\plot_aco_routes_iter_5.png
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_aco\plot_aco_routes_iter_5.fig
+ACO Iteration 6/100:  Global Best Cost: 60.92
+ACO Iteration 7/100:  Global Best Cost: 60.92
+ACO Iteration 8/100:  Global Best Cost: 60.92
+ACO Iteration 9/100:  Global Best Cost: 60.92
+ACO Iteration 10/100:  Global Best Cost: 60.92
+ACO Iteration 11/100:  Global Best Cost: 60.92
+ACO Iteration 12/100:  Global Best Cost: 60.92
+ACO Iteration 13/100:  Global Best Cost: 60.92
+ACO Iteration 14/100:  Global Best Cost: 60.92
+ACO Iteration 15/100:  Global Best Cost: 60.92
+ACO Iteration 16/100:  Global Best Cost: 60.92
+ACO Iteration 17/100:  Global Best Cost: 60.92
+ACO Iteration 18/100:  Global Best Cost: 60.92
+  ** New Global Best Found by ACO: 58.89 at iteration 18 **
+ACO Iteration 19/100:  Global Best Cost: 58.89
+ACO Iteration 20/100:  Global Best Cost: 58.89
+ACO Iteration 21/100:  Global Best Cost: 58.89
+ACO Iteration 22/100:  Global Best Cost: 58.89
+ACO Iteration 23/100:  Global Best Cost: 58.89
+ACO Iteration 24/100:  Global Best Cost: 58.89
+ACO Iteration 25/100:  Global Best Cost: 58.89
+ACO Iteration 26/100:  Global Best Cost: 58.89
+ACO Iteration 27/100:  Global Best Cost: 58.89
+ACO Iteration 28/100:  Global Best Cost: 58.89
+ACO Iteration 29/100:  Global Best Cost: 58.89
+ACO Iteration 30/100:  Global Best Cost: 58.89
+ACO Iteration 31/100:  Global Best Cost: 58.89
+ACO Iteration 32/100:  Global Best Cost: 58.89
+ACO Iteration 33/100:  Global Best Cost: 58.89
+ACO: Reached checkpoint at iteration 33. Saving intermediate results.
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_aco\plot_aco_routes_iter_33.png
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_aco\plot_aco_routes_iter_33.fig
+ACO Iteration 34/100:  Global Best Cost: 58.89
+ACO Iteration 35/100:  Global Best Cost: 58.89
+ACO Iteration 36/100:  Global Best Cost: 58.89
+ACO Iteration 37/100:  Global Best Cost: 58.89
+ACO Iteration 38/100:  Global Best Cost: 58.89
+ACO Iteration 39/100:  Global Best Cost: 58.89
+ACO Iteration 40/100:  Global Best Cost: 58.89
+ACO Iteration 41/100:  Global Best Cost: 58.89
+ACO Iteration 42/100:  Global Best Cost: 58.89
+ACO Iteration 43/100:  Global Best Cost: 58.89
+ACO Iteration 44/100:  Global Best Cost: 58.89
+ACO Iteration 45/100:  Global Best Cost: 58.89
+ACO Iteration 46/100:  Global Best Cost: 58.89
+ACO Iteration 47/100:  Global Best Cost: 58.89
+ACO Iteration 48/100:  Global Best Cost: 58.89
+ACO Iteration 49/100:  Global Best Cost: 58.89
+ACO Iteration 50/100:  Global Best Cost: 58.89
+ACO Iteration 51/100:  Global Best Cost: 58.89
+ACO Iteration 52/100:  Global Best Cost: 58.89
+ACO Iteration 53/100:  Global Best Cost: 58.89
+ACO Iteration 54/100:  Global Best Cost: 58.89
+ACO Iteration 55/100:  Global Best Cost: 58.89
+ACO Iteration 56/100:  Global Best Cost: 58.89
+ACO Iteration 57/100:  Global Best Cost: 58.89
+ACO Iteration 58/100:  Global Best Cost: 58.89
+ACO Iteration 59/100:  Global Best Cost: 58.89
+ACO Iteration 60/100:  Global Best Cost: 58.89
+ACO Iteration 61/100:  Global Best Cost: 58.89
+ACO Iteration 62/100:  Global Best Cost: 58.89
+ACO Iteration 63/100:  Global Best Cost: 58.89
+ACO Iteration 64/100:  Global Best Cost: 58.89
+ACO Iteration 65/100:  Global Best Cost: 58.89
+ACO Iteration 66/100:  Global Best Cost: 58.89
+ACO: Reached checkpoint at iteration 66. Saving intermediate results.
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_aco\plot_aco_routes_iter_66.png
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_aco\plot_aco_routes_iter_66.fig
+ACO Iteration 67/100:  Global Best Cost: 58.89
+ACO Iteration 68/100:  Global Best Cost: 58.89
+ACO Iteration 69/100:  Global Best Cost: 58.89
+ACO Iteration 70/100:  Global Best Cost: 58.89
+ACO Iteration 71/100:  Global Best Cost: 58.89
+ACO Iteration 72/100:  Global Best Cost: 58.89
+ACO Iteration 73/100:  Global Best Cost: 58.89
+ACO Iteration 74/100:  Global Best Cost: 58.89
+ACO Iteration 75/100:  Global Best Cost: 58.89
+ACO Iteration 76/100:  Global Best Cost: 58.89
+ACO Iteration 77/100:  Global Best Cost: 58.89
+ACO Iteration 78/100:  Global Best Cost: 58.89
+ACO Iteration 79/100:  Global Best Cost: 58.89
+ACO Iteration 80/100:  Global Best Cost: 58.89
+ACO Iteration 81/100:  Global Best Cost: 58.89
+ACO Iteration 82/100:  Global Best Cost: 58.89
+ACO Iteration 83/100:  Global Best Cost: 58.89
+ACO Iteration 84/100:  Global Best Cost: 58.89
+ACO Iteration 85/100:  Global Best Cost: 58.89
+ACO Iteration 86/100:  Global Best Cost: 58.89
+ACO Iteration 87/100:  Global Best Cost: 58.89
+ACO Iteration 88/100:  Global Best Cost: 58.89
+ACO Iteration 89/100:  Global Best Cost: 58.89
+ACO Iteration 90/100:  Global Best Cost: 58.89
+ACO Iteration 91/100:  Global Best Cost: 58.89
+ACO Iteration 92/100:  Global Best Cost: 58.89
+ACO Iteration 93/100:  Global Best Cost: 58.89
+  ** New Global Best Found by ACO: 57.36 at iteration 93 **
+ACO Iteration 94/100:  Global Best Cost: 57.36
+ACO Iteration 95/100:  Global Best Cost: 57.36
+ACO Iteration 96/100:  Global Best Cost: 57.36
+ACO Iteration 97/100:  Global Best Cost: 57.36
+ACO Iteration 98/100:  Global Best Cost: 57.36
+ACO Iteration 99/100:  Global Best Cost: 57.36
+ACO Iteration 100/100:  Global Best Cost: 57.36
+ACO: Reached checkpoint at iteration 100. Saving intermediate results.
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_aco\plot_aco_routes_iter_100.png
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_aco\plot_aco_routes_iter_100.fig
+ACO Finished. Final Global Best Cost: 57.36 after 100 iterations.
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_aco\plot_aco_final_routes.png
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_aco\plot_aco_final_routes.fig
+Exporting solution to KML file: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_aco\routes_aco_final.kml
+[警告: Mapping Toolbox not found. KML export skipped.] 
+[> 位置：<a href="matlab:matlab.internal.language.introspective.errorDocCallback('common_utilities.export_Routes_to_KML', 'D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\+common_utilities\export_Routes_to_KML.m', 23)" style="font-weight:bold">common_utilities.export_Routes_to_KML</a> (<a href="matlab: opentoline('D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\+common_utilities\export_Routes_to_KML.m',23,0)">第 23 行</a>)
+位置: <a href="matlab:matlab.internal.language.introspective.errorDocCallback('main_Orchestrator', 'D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\main_Orchestrator.m', 289)" style="font-weight:bold">main_Orchestrator</a> (<a href="matlab: opentoline('D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\main_Orchestrator.m',289,0)">第 289 行</a>)] 
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_aco\plot_aco_convergence.png
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\path_planning_aco\plot_aco_convergence.fig
+ACO run completed. Time: 93.26 s, Cost: 57.36
+
+--- 5. Generating Comparative Analytics ---
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\comparative_analysis_plots\plot_convergence_comparison.png
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\comparative_analysis_plots\plot_convergence_comparison.fig
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\comparative_analysis_plots\plot_final_performance_bars.png
+Figure saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\comparative_analysis_plots\plot_final_performance_bars.fig
+Generating comparative report to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838\comparative_report.txt
+Comparative report successfully saved.
+
+--- Simulation Run "ExperimentRun_20250524_230838" Completed ---
+All results saved to: D:\重要的程序文件\MATLAB\Drone_Urban_Logistics_Platform\results_output\ExperimentRun_20250524_230838
+Orchestrator finished at: 2025-05-24 23:18:11

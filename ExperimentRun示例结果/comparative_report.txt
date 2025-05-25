@@ -1,0 +1,60 @@
+============================================================
+      COMPARATIVE ANALYSIS REPORT: SA vs. ACO for MDVRP      
+============================================================
+Date Generated: 2025-05-24 23:18:11
+
+------------------------------------------------------------
+I. SCENARIO & DRONE PARAMETERS
+------------------------------------------------------------
+Center Location: Lat 36.0611, Lon 103.8343
+Map Radius: 5.0 km
+Number of Customers: 50
+Number of Candidate Depots: 20
+Number of Hubs Selected: 5
+
+Drone Payload Capacity: 10.0 units
+Drone Max Range: 15.0 km
+Drone Unit Cost: 0.50 /km
+
+------------------------------------------------------------
+II. SIMULATED ANNEALING (SA) RESULTS
+------------------------------------------------------------
+Parameters:
+  Initial Temperature: 1000.00
+  Final Temperature: 0.10
+  Cooling Rate (Alpha): 0.9800
+  Iterations per Temperature: 250
+
+Performance:
+  Final Best Cost: 63.79
+  Computation Time: 380.33 seconds
+  Number of Routes: 17
+  Total Distance Traveled: 127.58 km
+  Avg. Customers per Route: 2.94
+
+------------------------------------------------------------
+III. ANT COLONY OPTIMIZATION (ACO) RESULTS
+------------------------------------------------------------
+Parameters:
+  Number of Ants: 30
+  Max Iterations: 100
+  Pheromone Evaporation (rho): 0.1000
+  Pheromone Importance (alpha_aco): 1.00
+  Heuristic Importance (beta_aco): 2.00
+  Initial Pheromone (tau0): 0.1000
+
+Performance:
+  Final Best Cost: 57.36
+  Computation Time: 93.26 seconds
+  Number of Routes: 15
+  Total Distance Traveled: 114.72 km
+  Avg. Customers per Route: 3.33
+
+------------------------------------------------------------
+IV. QUICK COMPARISON
+------------------------------------------------------------
+Lowest Cost: ACO (57.36) vs SA (63.79)
+Faster Computation: ACO (93.26s) vs SA (380.33s)
+============================================================
+                        END OF REPORT                       
+============================================================
