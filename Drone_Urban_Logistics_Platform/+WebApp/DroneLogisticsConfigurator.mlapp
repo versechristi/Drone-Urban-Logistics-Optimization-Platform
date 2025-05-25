@@ -1,0 +1,561 @@
+% MATLAB App Designer Code View for DroneLogisticsConfigurator.mlapp
+classdef DroneLogisticsConfigurator < matlab.apps.AppBase
+
+    % Properties that correspond to app components
+    properties (Access = public)
+        UIFigure                   matlab.ui.Figure
+        MainGridLayout             matlab.ui.container.GridLayout
+        TabGroup                   matlab.ui.container.TabGroup
+        ScenarioLocationTab        matlab.ui.container.Tab
+        ScenarioGridLayout         matlab.ui.container.GridLayout
+        LatitudeLabel              matlab.ui.control.Label
+        LatitudeInput              matlab.ui.control.NumericEditField
+        LongitudeLabel             matlab.ui.control.Label
+        LongitudeInput             matlab.ui.control.NumericEditField
+        MapRadiusLabel             matlab.ui.control.Label
+        MapRadiusInput             matlab.ui.control.NumericEditField
+        NumCustomersLabel          matlab.ui.control.Label
+        NumCustomersInput          matlab.ui.control.NumericEditField
+        NumCandidateDepotsLabel    matlab.ui.control.Label
+        NumCandidateDepotsInput    matlab.ui.control.NumericEditField
+        NumHubsToSelectLabel       matlab.ui.control.Label
+        NumHubsToSelectInput       matlab.ui.control.NumericEditField
+        DroneParametersTab         matlab.ui.container.Tab
+        DroneGridLayout            matlab.ui.container.GridLayout
+        DronePayloadLabel          matlab.ui.control.Label
+        DronePayloadInput          matlab.ui.control.NumericEditField
+        DroneRangeLabel            matlab.ui.control.Label
+        DroneRangeInput            matlab.ui.control.NumericEditField
+        DroneUnitCostLabel         matlab.ui.control.Label
+        DroneUnitCostInput         matlab.ui.control.NumericEditField
+        SAParametersTab            matlab.ui.container.Tab
+        SAGridLayout               matlab.ui.container.GridLayout
+        SA_InitialTempLabel        matlab.ui.control.Label
+        SA_InitialTempInput        matlab.ui.control.NumericEditField
+        SA_FinalTempLabel          matlab.ui.control.Label
+        SA_FinalTempInput          matlab.ui.control.NumericEditField
+        SA_AlphaLabel              matlab.ui.control.Label
+        SA_AlphaInput              matlab.ui.control.NumericEditField
+        SA_MaxIterPerTempLabel     matlab.ui.control.Label
+        SA_MaxIterPerTempInput     matlab.ui.control.NumericEditField
+        ACOParametersTab           matlab.ui.container.Tab
+        ACOGridLayout              matlab.ui.container.GridLayout
+        ACO_NumAntsLabel           matlab.ui.control.Label
+        ACO_NumAntsInput           matlab.ui.control.NumericEditField
+        ACO_MaxIterationsLabel     matlab.ui.control.Label
+        ACO_MaxIterationsInput     matlab.ui.control.NumericEditField
+        ACO_RhoLabel               matlab.ui.control.Label
+        ACO_RhoInput               matlab.ui.control.NumericEditField
+        ACO_AlphaPheromoneLabel    matlab.ui.control.Label
+        ACO_AlphaPheromoneInput    matlab.ui.control.NumericEditField
+        ACO_BetaHeuristicLabel     matlab.ui.control.Label
+        ACO_BetaHeuristicInput     matlab.ui.control.NumericEditField
+        ACO_Tau0Label              matlab.ui.control.Label
+        ACO_Tau0Input              matlab.ui.control.NumericEditField
+        BottomPanelGridLayout      matlab.ui.container.GridLayout
+        RunSimulationButton        matlab.ui.control.Button
+        StatusTextArea             matlab.ui.control.TextArea
+        LoadDefaultsButton         matlab.ui.control.Button % Added button
+    end
+
+    % Properties to store configuration
+    properties (Access = private)
+        ConfigParameters struct % Structure to hold all parameters
+        ProjectBasePath string   % Path to the project root
+    end
+
+    % Callbacks that handle component events
+    methods (Access = private)
+
+        % Code that executes after component creation
+        function startupFcn(app)
+            % Determine project base path (assuming WebApp is one level down)
+            % This path is used for saving/loading configurations relative to project root
+            app.ProjectBasePath = fileparts(fileparts(mfilename('fullpath')));
+            app.StatusTextArea.Value = {['Welcome! Project base path identified as: ', app.ProjectBasePath];
+                                        'Configure parameters or load defaults.'};
+            % Automatically load default parameters on startup
+            loadDefaultParameters(app);
+        end
+
+        % Function to load default parameters
+        function loadDefaultParameters(app, event)
+            defaultParamFile = fullfile(app.ProjectBasePath, 'configurations', 'default_simulation_parameters.m');
+            if exist(defaultParamFile, 'file')
+                try
+                    % Run the script to get the params structure
+                    params = feval(extractBefore(defaultParamFile, '.m')); % feval calls the script
+
+                    % --- Populate Scenario & Location Parameters ---
+                    app.LatitudeInput.Value = params.Scenario.CenterLatitude;
+                    app.LongitudeInput.Value = params.Scenario.CenterLongitude;
+                    app.MapRadiusInput.Value = params.Scenario.MapRadiusKm;
+                    app.NumCustomersInput.Value = params.Scenario.NumCustomers;
+                    app.NumCandidateDepotsInput.Value = params.Scenario.NumCandidateDepots;
+                    app.NumHubsToSelectInput.Value = params.Scenario.NumHubsToSelect;
+
+                    % --- Populate Drone Parameters ---
+                    app.DronePayloadInput.Value = params.Drone.PayloadCapacity;
+                    app.DroneRangeInput.Value = params.Drone.MaxRangeKm;
+                    app.DroneUnitCostInput.Value = params.Drone.UnitCostPerKm;
+
+                    % --- Populate SA Parameters ---
+                    app.SA_InitialTempInput.Value = params.SA.InitialTemp;
+                    app.SA_FinalTempInput.Value = params.SA.FinalTemp;
+                    app.SA_AlphaInput.Value = params.SA.Alpha;
+                    app.SA_MaxIterPerTempInput.Value = params.SA.MaxIterPerTemp;
+
+                    % --- Populate ACO Parameters ---
+                    app.ACO_NumAntsInput.Value = params.ACO.NumAnts;
+                    app.ACO_MaxIterationsInput.Value = params.ACO.MaxIterations;
+                    app.ACO_RhoInput.Value = params.ACO.Rho_Evaporation;
+                    app.ACO_AlphaPheromoneInput.Value = params.ACO.Alpha_PheromoneImportance;
+                    app.ACO_BetaHeuristicInput.Value = params.ACO.Beta_HeuristicImportance;
+                    app.ACO_Tau0Input.Value = params.ACO.Tau0_InitialPheromone;
+
+                    app.StatusTextArea.Value = {'Default parameters loaded successfully.'};
+                catch ME
+                    app.StatusTextArea.Value = {'Error loading default parameters:', ME.message};
+                    uialert(app.UIFigure, ['Error loading default_simulation_parameters.m: ' ME.message], 'Loading Error', 'Icon', 'error');
+                end
+            else
+                app.StatusTextArea.Value = {['Default parameter file not found: ', defaultParamFile]};
+                 uialert(app.UIFigure, ['Default parameter file not found: ', defaultParamFile newline 'Please create it in the configurations folder.'], 'File Not Found', 'Icon', 'warning');
+            end
+        end
+
+        % Button pushed function: RunSimulationButton
+        function RunSimulationButtonPushed(app, event)
+            app.StatusTextArea.Value = {'Collecting parameters...'};
+            drawnow; % Update text area immediately
+
+            try
+                params = struct(); % Initialize params structure
+
+                % --- Collect Scenario & Location Parameters ---
+                params.Scenario.CenterLatitude = app.LatitudeInput.Value;
+                params.Scenario.CenterLongitude = app.LongitudeInput.Value;
+                params.Scenario.MapRadiusKm = app.MapRadiusInput.Value;
+                params.Scenario.NumCustomers = round(app.NumCustomersInput.Value); % Ensure integer
+                if params.Scenario.NumCustomers <= 0
+                    error('Number of customers must be positive.');
+                end
+                params.Scenario.NumCandidateDepots = round(app.NumCandidateDepotsInput.Value); % Ensure integer
+                params.Scenario.NumHubsToSelect = round(app.NumHubsToSelectInput.Value); % Ensure integer
+                if params.Scenario.NumHubsToSelect <=0
+                    error('Number of hubs to select must be positive.');
+                end
+                if params.Scenario.NumHubsToSelect > params.Scenario.NumCandidateDepots && params.Scenario.NumCandidateDepots > 0
+                     error('Number of hubs to select cannot exceed candidate depots.');
+                end
+
+
+                % --- Collect Drone Parameters ---
+                params.Drone.PayloadCapacity = app.DronePayloadInput.Value;
+                if params.Drone.PayloadCapacity <= 0
+                    error('Drone payload capacity must be positive.');
+                end
+                params.Drone.MaxRangeKm = app.DroneRangeInput.Value;
+                 if params.Drone.MaxRangeKm <= 0
+                    error('Drone max range must be positive.');
+                end
+                params.Drone.UnitCostPerKm = app.DroneUnitCostInput.Value;
+
+                % --- Collect SA Parameters ---
+                params.SA.InitialTemp = app.SA_InitialTempInput.Value;
+                params.SA.FinalTemp = app.SA_FinalTempInput.Value;
+                params.SA.Alpha = app.SA_AlphaInput.Value;
+                if params.SA.Alpha <=0 || params.SA.Alpha >=1
+                    error('SA Alpha (cooling rate) must be (0, 1).');
+                end
+                params.SA.MaxIterPerTemp = round(app.SA_MaxIterPerTempInput.Value); % Ensure integer
+                if params.SA.InitialTemp <= params.SA.FinalTemp
+                    error('SA Initial Temperature must be greater than Final Temperature.');
+                end
+                if params.SA.MaxIterPerTemp <=0
+                    error('SA Iterations per Temp must be positive.');
+                end
+
+                % --- Collect ACO Parameters ---
+                params.ACO.NumAnts = round(app.ACO_NumAntsInput.Value); % Ensure integer
+                params.ACO.MaxIterations = round(app.ACO_MaxIterationsInput.Value); % Ensure integer
+                params.ACO.Rho_Evaporation = app.ACO_RhoInput.Value;
+                 if params.ACO.Rho_Evaporation < 0 || params.ACO.Rho_Evaporation > 1
+                    error('ACO Pheromone Evaporation (rho) must be [0, 1].');
+                end
+                params.ACO.Alpha_PheromoneImportance = app.ACO_AlphaPheromoneInput.Value;
+                params.ACO.Beta_HeuristicImportance = app.ACO_BetaHeuristicInput.Value;
+                params.ACO.Tau0_InitialPheromone = app.ACO_Tau0Input.Value;
+                if params.ACO.NumAnts <=0 || params.ACO.MaxIterations <=0
+                    error('ACO Number of Ants and Max Iterations must be positive.');
+                end
+
+
+                app.ConfigParameters = params; % Store in app property
+
+                configFolderPath = fullfile(app.ProjectBasePath, 'configurations');
+                if ~exist(configFolderPath, 'dir')
+                    mkdir(configFolderPath);
+                    app.StatusTextArea.Value{end+1} = ['Configuration folder created: ', configFolderPath];
+                end
+                parameterFilePath = fullfile(configFolderPath, 'current_run_parameters.mat');
+
+                save(parameterFilePath, 'params'); % Save the 'params' struct directly
+
+                app.StatusTextArea.Value = {
+                    'Parameters successfully collected and validated.';
+                    ['Saved to: ', parameterFilePath];
+                    ' ';
+                    'TO RUN THE SIMULATION:';
+                    '1. Ensure this app is closed or minimized.';
+                    '2. Open and run "main_Orchestrator.m" from the project root directory.';
+                    '(Or, main_Orchestrator.m can be called directly from here if modified)'
+                };
+                fprintf('INFO: Parameters saved to %s\n', parameterFilePath);
+                disp('Collected Parameters:');
+                disp(app.ConfigParameters);
+
+            catch ME
+                app.StatusTextArea.Value = {['Error: ', ME.message], 'Please correct the input values.'};
+                uialert(app.UIFigure, ME.message, 'Parameter Validation Error', 'Icon', 'error');
+                return;
+            end
+        end
+    end
+
+    % App creation and deletion
+    methods (Access = public)
+
+        % Construct app
+        function app = DroneLogisticsConfigurator(varargin)
+            % Create UIFigure and components
+            createComponents(app)
+
+            % Register the app with App Designer
+            registerApp(app, app.UIFigure)
+            
+            % Run startup function
+            runStartupFcn(app, @startupFcn)
+
+            if nargout == 0
+                clear app
+            end
+        end
+
+        % Code that executes before app deletion
+        function delete(app)
+            % Delete UIFigure when app is deleted
+            delete(app.UIFigure)
+        end
+    end
+
+    % Component initialization
+    methods (Access = private)
+
+        % Create UIFigure and components
+        function createComponents(app)
+            % Create UIFigure
+            app.UIFigure = uifigure('Visible', 'off');
+            app.UIFigure.Position = [100 100 800 650];
+            app.UIFigure.Name = 'Drone Logistics & Hub Optimization Configurator';
+            app.UIFigure.Resize = 'off'; % Fixed size for simplicity
+
+            % Create MainGridLayout
+            app.MainGridLayout = uigridlayout(app.UIFigure);
+            app.MainGridLayout.ColumnWidth = {'1x'};
+            app.MainGridLayout.RowHeight = {'1x', 80}; % Tabs, then bottom panel for buttons/status
+
+            % Create TabGroup
+            app.TabGroup = uitabgroup(app.MainGridLayout);
+            app.TabGroup.Layout.Row = 1;
+            app.TabGroup.Layout.Column = 1;
+
+            % Create ScenarioLocationTab and its GridLayout
+            app.ScenarioLocationTab = uitab(app.TabGroup, 'Title', 'Scenario & Location');
+            app.ScenarioGridLayout = uigridlayout(app.ScenarioLocationTab);
+            app.ScenarioGridLayout.ColumnWidth = {220, '1x'}; % Adjusted for longer labels
+            app.ScenarioGridLayout.RowHeight = repmat({30}, 1, 6); % 6 rows
+
+            % Create LatitudeLabel
+            app.LatitudeLabel = uilabel(app.ScenarioGridLayout);
+            app.LatitudeLabel.HorizontalAlignment = 'right';
+            app.LatitudeLabel.Layout.Row = 1;
+            app.LatitudeLabel.Layout.Column = 1;
+            app.LatitudeLabel.Text = 'Simulation Center Latitude (°):';
+            % Create LatitudeInput
+            app.LatitudeInput = uieditfield(app.ScenarioGridLayout, 'numeric');
+            app.LatitudeInput.Layout.Row = 1;
+            app.LatitudeInput.Layout.Column = 2;
+            app.LatitudeInput.Value = 36.0611;
+
+            % Create LongitudeLabel
+            app.LongitudeLabel = uilabel(app.ScenarioGridLayout);
+            app.LongitudeLabel.HorizontalAlignment = 'right';
+            app.LongitudeLabel.Layout.Row = 2;
+            app.LongitudeLabel.Layout.Column = 1;
+            app.LongitudeLabel.Text = 'Simulation Center Longitude (°):';
+            % Create LongitudeInput
+            app.LongitudeInput = uieditfield(app.ScenarioGridLayout, 'numeric');
+            app.LongitudeInput.Layout.Row = 2;
+            app.LongitudeInput.Layout.Column = 2;
+            app.LongitudeInput.Value = 103.8343;
+
+            % Create MapRadiusLabel
+            app.MapRadiusLabel = uilabel(app.ScenarioGridLayout);
+            app.MapRadiusLabel.HorizontalAlignment = 'right';
+            app.MapRadiusLabel.Layout.Row = 3;
+            app.MapRadiusLabel.Layout.Column = 1;
+            app.MapRadiusLabel.Text = 'Map Radius (for customer/depot gen., km):';
+            % Create MapRadiusInput
+            app.MapRadiusInput = uieditfield(app.ScenarioGridLayout, 'numeric');
+            app.MapRadiusInput.Layout.Row = 3;
+            app.MapRadiusInput.Layout.Column = 2;
+            app.MapRadiusInput.Value = 5;
+
+            % Create NumCustomersLabel
+            app.NumCustomersLabel = uilabel(app.ScenarioGridLayout);
+            app.NumCustomersLabel.HorizontalAlignment = 'right';
+            app.NumCustomersLabel.Layout.Row = 4;
+            app.NumCustomersLabel.Layout.Column = 1;
+            app.NumCustomersLabel.Text = 'Number of Customers:';
+            % Create NumCustomersInput
+            app.NumCustomersInput = uieditfield(app.ScenarioGridLayout, 'numeric');
+            app.NumCustomersInput.Layout.Row = 4;
+            app.NumCustomersInput.Layout.Column = 2;
+            app.NumCustomersInput.Value = 50;
+
+            % Create NumCandidateDepotsLabel
+            app.NumCandidateDepotsLabel = uilabel(app.ScenarioGridLayout);
+            app.NumCandidateDepotsLabel.HorizontalAlignment = 'right';
+            app.NumCandidateDepotsLabel.Layout.Row = 5;
+            app.NumCandidateDepotsLabel.Layout.Column = 1;
+            app.NumCandidateDepotsLabel.Text = 'Number of Candidate Depots (to generate):';
+            % Create NumCandidateDepotsInput
+            app.NumCandidateDepotsInput = uieditfield(app.ScenarioGridLayout, 'numeric');
+            app.NumCandidateDepotsInput.Layout.Row = 5;
+            app.NumCandidateDepotsInput.Layout.Column = 2;
+            app.NumCandidateDepotsInput.Value = 20;
+
+            % Create NumHubsToSelectLabel
+            app.NumHubsToSelectLabel = uilabel(app.ScenarioGridLayout);
+            app.NumHubsToSelectLabel.HorizontalAlignment = 'right';
+            app.NumHubsToSelectLabel.Layout.Row = 6;
+            app.NumHubsToSelectLabel.Layout.Column = 1;
+            app.NumHubsToSelectLabel.Text = 'Number of Hubs to Select:';
+            % Create NumHubsToSelectInput
+            app.NumHubsToSelectInput = uieditfield(app.ScenarioGridLayout, 'numeric');
+            app.NumHubsToSelectInput.Layout.Row = 6;
+            app.NumHubsToSelectInput.Layout.Column = 2;
+            app.NumHubsToSelectInput.Value = 5;
+
+            % Create DroneParametersTab and its GridLayout
+            app.DroneParametersTab = uitab(app.TabGroup, 'Title', 'Drone Parameters');
+            app.DroneGridLayout = uigridlayout(app.DroneParametersTab);
+            app.DroneGridLayout.ColumnWidth = {180, '1x'};
+            app.DroneGridLayout.RowHeight = repmat({30}, 1, 3);
+
+            % Create DronePayloadLabel
+            app.DronePayloadLabel = uilabel(app.DroneGridLayout);
+            app.DronePayloadLabel.HorizontalAlignment = 'right';
+            app.DronePayloadLabel.Layout.Row = 1;
+            app.DronePayloadLabel.Layout.Column = 1;
+            app.DronePayloadLabel.Text = 'Payload Capacity (units):';
+            % Create DronePayloadInput
+            app.DronePayloadInput = uieditfield(app.DroneGridLayout, 'numeric');
+            app.DronePayloadInput.Layout.Row = 1;
+            app.DronePayloadInput.Layout.Column = 2;
+            app.DronePayloadInput.Value = 10;
+
+            % Create DroneRangeLabel
+            app.DroneRangeLabel = uilabel(app.DroneGridLayout);
+            app.DroneRangeLabel.HorizontalAlignment = 'right';
+            app.DroneRangeLabel.Layout.Row = 2;
+            app.DroneRangeLabel.Layout.Column = 1;
+            app.DroneRangeLabel.Text = 'Max Range (km):';
+            % Create DroneRangeInput
+            app.DroneRangeInput = uieditfield(app.DroneGridLayout, 'numeric');
+            app.DroneRangeInput.Layout.Row = 2;
+            app.DroneRangeInput.Layout.Column = 2;
+            app.DroneRangeInput.Value = 15;
+
+            % Create DroneUnitCostLabel
+            app.DroneUnitCostLabel = uilabel(app.DroneGridLayout);
+            app.DroneUnitCostLabel.HorizontalAlignment = 'right';
+            app.DroneUnitCostLabel.Layout.Row = 3;
+            app.DroneUnitCostLabel.Layout.Column = 1;
+            app.DroneUnitCostLabel.Text = 'Unit Cost (per km):';
+            % Create DroneUnitCostInput
+            app.DroneUnitCostInput = uieditfield(app.DroneGridLayout, 'numeric');
+            app.DroneUnitCostInput.Layout.Row = 3;
+            app.DroneUnitCostInput.Layout.Column = 2;
+            app.DroneUnitCostInput.Value = 0.5;
+
+            % Create SAParametersTab and its GridLayout
+            app.SAParametersTab = uitab(app.TabGroup, 'Title', 'SA Parameters');
+            app.SAGridLayout = uigridlayout(app.SAParametersTab);
+            app.SAGridLayout.ColumnWidth = {180, '1x'};
+            app.SAGridLayout.RowHeight = repmat({30}, 1, 4);
+
+            % Create SA_InitialTempLabel
+            app.SA_InitialTempLabel = uilabel(app.SAGridLayout);
+            app.SA_InitialTempLabel.HorizontalAlignment = 'right';
+            app.SA_InitialTempLabel.Layout.Row = 1;
+            app.SA_InitialTempLabel.Layout.Column = 1;
+            app.SA_InitialTempLabel.Text = 'Initial Temperature (T_initial):';
+            % Create SA_InitialTempInput
+            app.SA_InitialTempInput = uieditfield(app.SAGridLayout, 'numeric');
+            app.SA_InitialTempInput.Layout.Row = 1;
+            app.SA_InitialTempInput.Layout.Column = 2;
+            app.SA_InitialTempInput.Value = 1000;
+
+            % Create SA_FinalTempLabel
+            app.SA_FinalTempLabel = uilabel(app.SAGridLayout);
+            app.SA_FinalTempLabel.HorizontalAlignment = 'right';
+            app.SA_FinalTempLabel.Layout.Row = 2;
+            app.SA_FinalTempLabel.Layout.Column = 1;
+            app.SA_FinalTempLabel.Text = 'Final Temperature (T_final):';
+            % Create SA_FinalTempInput
+            app.SA_FinalTempInput = uieditfield(app.SAGridLayout, 'numeric');
+            app.SA_FinalTempInput.Layout.Row = 2;
+            app.SA_FinalTempInput.Layout.Column = 2;
+            app.SA_FinalTempInput.Value = 0.1;
+
+            % Create SA_AlphaLabel
+            app.SA_AlphaLabel = uilabel(app.SAGridLayout);
+            app.SA_AlphaLabel.HorizontalAlignment = 'right';
+            app.SA_AlphaLabel.Layout.Row = 3;
+            app.SA_AlphaLabel.Layout.Column = 1;
+            app.SA_AlphaLabel.Text = 'Cooling Rate (alpha):';
+            % Create SA_AlphaInput
+            app.SA_AlphaInput = uieditfield(app.SAGridLayout, 'numeric');
+            app.SA_AlphaInput.Layout.Row = 3;
+            app.SA_AlphaInput.Layout.Column = 2;
+            app.SA_AlphaInput.Value = 0.98;
+
+            % Create SA_MaxIterPerTempLabel
+            app.SA_MaxIterPerTempLabel = uilabel(app.SAGridLayout);
+            app.SA_MaxIterPerTempLabel.HorizontalAlignment = 'right';
+            app.SA_MaxIterPerTempLabel.Layout.Row = 4;
+            app.SA_MaxIterPerTempLabel.Layout.Column = 1;
+            app.SA_MaxIterPerTempLabel.Text = 'Iterations per Temp:';
+            % Create SA_MaxIterPerTempInput
+            app.SA_MaxIterPerTempInput = uieditfield(app.SAGridLayout, 'numeric');
+            app.SA_MaxIterPerTempInput.Layout.Row = 4;
+            app.SA_MaxIterPerTempInput.Layout.Column = 2;
+            app.SA_MaxIterPerTempInput.Value = 250;
+
+            % Create ACOParametersTab and its GridLayout
+            app.ACOParametersTab = uitab(app.TabGroup, 'Title', 'ACO Parameters');
+            app.ACOGridLayout = uigridlayout(app.ACOParametersTab);
+            app.ACOGridLayout.ColumnWidth = {220, '1x'}; % Adjusted
+            app.ACOGridLayout.RowHeight = repmat({30}, 1, 6);
+
+            % Create ACO_NumAntsLabel
+            app.ACO_NumAntsLabel = uilabel(app.ACOGridLayout);
+            app.ACO_NumAntsLabel.HorizontalAlignment = 'right';
+            app.ACO_NumAntsLabel.Layout.Row = 1;
+            app.ACO_NumAntsLabel.Layout.Column = 1;
+            app.ACO_NumAntsLabel.Text = 'Number of Ants:';
+            % Create ACO_NumAntsInput
+            app.ACO_NumAntsInput = uieditfield(app.ACOGridLayout, 'numeric');
+            app.ACO_NumAntsInput.Layout.Row = 1;
+            app.ACO_NumAntsInput.Layout.Column = 2;
+            app.ACO_NumAntsInput.Value = 50;
+
+            % Create ACO_MaxIterationsLabel
+            app.ACO_MaxIterationsLabel = uilabel(app.ACOGridLayout);
+            app.ACO_MaxIterationsLabel.HorizontalAlignment = 'right';
+            app.ACO_MaxIterationsLabel.Layout.Row = 2;
+            app.ACO_MaxIterationsLabel.Layout.Column = 1;
+            app.ACO_MaxIterationsLabel.Text = 'Max Iterations:';
+            % Create ACO_MaxIterationsInput
+            app.ACO_MaxIterationsInput = uieditfield(app.ACOGridLayout, 'numeric');
+            app.ACO_MaxIterationsInput.Layout.Row = 2;
+            app.ACO_MaxIterationsInput.Layout.Column = 2;
+            app.ACO_MaxIterationsInput.Value = 200;
+
+            % Create ACO_RhoLabel
+            app.ACO_RhoLabel = uilabel(app.ACOGridLayout);
+            app.ACO_RhoLabel.HorizontalAlignment = 'right';
+            app.ACO_RhoLabel.Layout.Row = 3;
+            app.ACO_RhoLabel.Layout.Column = 1;
+            app.ACO_RhoLabel.Text = 'Pheromone Evaporation (rho):';
+            % Create ACO_RhoInput
+            app.ACO_RhoInput = uieditfield(app.ACOGridLayout, 'numeric');
+            app.ACO_RhoInput.Layout.Row = 3;
+            app.ACO_RhoInput.Layout.Column = 2;
+            app.ACO_RhoInput.Value = 0.1;
+
+            % Create ACO_AlphaPheromoneLabel
+            app.ACO_AlphaPheromoneLabel = uilabel(app.ACOGridLayout);
+            app.ACO_AlphaPheromoneLabel.HorizontalAlignment = 'right';
+            app.ACO_AlphaPheromoneLabel.Layout.Row = 4;
+            app.ACO_AlphaPheromoneLabel.Layout.Column = 1;
+            app.ACO_AlphaPheromoneLabel.Text = 'Pheromone Importance (alpha_aco):';
+            % Create ACO_AlphaPheromoneInput
+            app.ACO_AlphaPheromoneInput = uieditfield(app.ACOGridLayout, 'numeric');
+            app.ACO_AlphaPheromoneInput.Layout.Row = 4;
+            app.ACO_AlphaPheromoneInput.Layout.Column = 2;
+            app.ACO_AlphaPheromoneInput.Value = 1.0;
+
+            % Create ACO_BetaHeuristicLabel
+            app.ACO_BetaHeuristicLabel = uilabel(app.ACOGridLayout);
+            app.ACO_BetaHeuristicLabel.HorizontalAlignment = 'right';
+            app.ACO_BetaHeuristicLabel.Layout.Row = 5;
+            app.ACO_BetaHeuristicLabel.Layout.Column = 1;
+            app.ACO_BetaHeuristicLabel.Text = 'Heuristic Importance (beta_aco):';
+            % Create ACO_BetaHeuristicInput
+            app.ACO_BetaHeuristicInput = uieditfield(app.ACOGridLayout, 'numeric');
+            app.ACO_BetaHeuristicInput.Layout.Row = 5;
+            app.ACO_BetaHeuristicInput.Layout.Column = 2;
+            app.ACO_BetaHeuristicInput.Value = 2.0;
+
+            % Create ACO_Tau0Label
+            app.ACO_Tau0Label = uilabel(app.ACOGridLayout);
+            app.ACO_Tau0Label.HorizontalAlignment = 'right';
+            app.ACO_Tau0Label.Layout.Row = 6;
+            app.ACO_Tau0Label.Layout.Column = 1;
+            app.ACO_Tau0Label.Text = 'Initial Pheromone (tau0):';
+            % Create ACO_Tau0Input
+            app.ACO_Tau0Input = uieditfield(app.ACOGridLayout, 'numeric');
+            app.ACO_Tau0Input.Layout.Row = 6;
+            app.ACO_Tau0Input.Layout.Column = 2;
+            app.ACO_Tau0Input.Value = 0.1;
+
+            % Create BottomPanelGridLayout
+            app.BottomPanelGridLayout = uigridlayout(app.MainGridLayout);
+            app.BottomPanelGridLayout.Layout.Row = 2;
+            app.BottomPanelGridLayout.Layout.Column = 1;
+            app.BottomPanelGridLayout.ColumnWidth = {220, 250, '1x'}; % LoadDefaults, Save&Run, Status
+            app.BottomPanelGridLayout.RowHeight = {'1x'};
+            app.BottomPanelGridLayout.Padding = [10 10 10 10]; % Add padding
+
+            % Create LoadDefaultsButton
+            app.LoadDefaultsButton = uibutton(app.BottomPanelGridLayout, 'push');
+            app.LoadDefaultsButton.ButtonPushedFcn = createCallbackFcn(app, @loadDefaultParameters, true);
+            app.LoadDefaultsButton.Layout.Row = 1;
+            app.LoadDefaultsButton.Layout.Column = 1;
+            app.LoadDefaultsButton.Text = 'Load Default Parameters';
+            app.LoadDefaultsButton.Icon = 'matlabicon.gif'; % Placeholder icon
+
+            % Create RunSimulationButton
+            app.RunSimulationButton = uibutton(app.BottomPanelGridLayout, 'push');
+            app.RunSimulationButton.ButtonPushedFcn = createCallbackFcn(app, @RunSimulationButtonPushed, true);
+            app.RunSimulationButton.Layout.Row = 1;
+            app.RunSimulationButton.Layout.Column = 2;
+            app.RunSimulationButton.Text = 'Save Config & Prepare Run';
+            app.RunSimulationButton.Icon = matlab.ui.primitive.Icon.RUN_24; % Standard run icon
+
+            % Create StatusTextArea
+            app.StatusTextArea = uitextarea(app.BottomPanelGridLayout);
+            app.StatusTextArea.Editable = false;
+            app.StatusTextArea.WordWrap = 'on';
+            app.StatusTextArea.Layout.Row = 1;
+            app.StatusTextArea.Layout.Column = 3;
+            app.StatusTextArea.Value = {'Welcome!'};
+
+            % Show the figure after all components are created
+            app.UIFigure.Visible = 'on';
+        end
+    end
+end
